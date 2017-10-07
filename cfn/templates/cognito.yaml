@@ -1,0 +1,53 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Cognito User pool template
+Parameters:
+  poolName:
+    Description: Cognito User Pool Name
+    Type: String
+
+# -----------------------------------------------------------------------------------------
+Resources:
+# -----------------------------------------------------------------------------------------
+
+  CognitoUserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: !Sub ${poolName}-pool
+      AliasAttributes:
+        - email
+      AutoVerifiedAttributes:
+        - email
+      Schema:
+        - Name: name
+          AttributeDataType: String
+          Mutable: true
+          Required: true
+        - Name: email
+          AttributeDataType: String
+          Mutable: false
+          Required: true
+
+  UserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      ClientName: !Sub ${poolName}-client
+      GenerateSecret: false
+      UserPoolId: !Ref CognitoUserPool
+
+
+
+
+# -----------------------------------------------------------------------------------------
+# OUTPUTS
+# -----------------------------------------------------------------------------------------
+Outputs:
+  cognitoUserPool:
+    Value: '|Ref|CognitoUserPool'
+    Description: Cognito User Pool Id
+  cognitoArnPool:
+    Value: !GetAtt CognitoUserPool.Arn
+    Description: Cognito User Pool ARN
+  cognitoUserPoolClient:
+    Value: !Ref UserPoolClient
+    Description: Cognito User Pool ARN
+

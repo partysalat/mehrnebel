@@ -9,3 +9,9 @@ stacks:
       # random identifier
       originId: 's3-cornetto-login-assets'
       originPath: '/assets'
+
+  login-cognito-userpool:
+    template-url: templates/cognito.yaml
+    timeout: 1200
+    parameters:
+      poolName: 'cornetto'
