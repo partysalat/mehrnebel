@@ -1,0 +1,7 @@
+.serverless/
+node_modules/
+*.iml
+.idea/
+target/
+.webpack/
+npm-debug.log

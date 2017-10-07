@@ -1,0 +1,22 @@
+
+machine:
+  node:
+    version: 6
+
+dependencies:
+  override:
+    - npm prune && npm install
+  post:
+    - npm run clean && npm run browser:build
+    - npm run lint
+
+test:
+  override:
+    - npm run test
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - npm run browser:deploy
+      - npm run server:deploy

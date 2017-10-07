@@ -1,0 +1,12 @@
+region: eu-west-1
+
+stacks:
+  login-assets:
+    template-url: templates/assets.yaml
+    timeout: 1200
+    parameters:
+      bucketName: 'cornetto-login-assets'
+      # random identifier
+      originId: 's3-cornetto-login-assets'
+      originPath: '/assets'
+

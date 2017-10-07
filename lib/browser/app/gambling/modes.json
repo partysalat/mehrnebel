@@ -1,0 +1,32 @@
+{
+  "modifier":[
+    {"text":"Standard", "description": "Macht nichts"},
+    {"text":"Reverse","description": "Umgekehrt"},
+    {"text":"Silent","description": "Leise sein"},
+    {"text":"Double Trouble","description": "Zwei Bier"},
+    {"text":"Double or Nothing", "description": "Jedes Team legt selbst fest: eine Flasche Luft gemeinsam trinken oder jeder ein 0,33er Mädchenbier"},
+    {"text":"Görli","description": "jedes Team raucht nebenbei"},
+    {"text":"Faxe", "description": "Es wird mit 1,0l Faxe schwach gespielt"},
+    {"text":"Coop Faxe", "description": "Der der nichts wirft, trinkst. Gerade Anzahl an Spieler benötigt."},
+    {"text":"Heavy Metal", "description": "Es wird mit Dosenbier gespielt, soweit möglich Marke “5,0”"}
+  ],
+  "basis":[
+    {"text":"Standard", "description": "Normale Regeln"},
+    {"text":"Parkplatz", "description": "Treffer: Team einen Schritt zurück"},
+    {"text":"Potsdamer Platz","description":"alle exen sobald ein Pfandpirat die Flasche nimmt /Reverse: Leergut wird von fremder Person abgestellt"},
+    {"text":"Catwalk", "description":"Spieler stehen sehr eng"},
+    {"text":"Herrengedeck", "description": "Vor dem ersten Schluck Bier wird ein Kurzer getrunken"},
+    {"text":"Oldschool","description": "Ball wird gerollt, “Früher war…” & “die Jugend von heute…”"}
+  ],
+  "special":[
+    {"text":"Standard","description": "nichts passiert"},
+    {"text":"Bass","description": "werfen mit Basskabel"},
+    {"text":"Kopfstand","description": "Flasche muss auf dem Kopf hingestellt werden"},
+    {"text":"Luft","description": "Strafbier ist Luft"},
+    {"text":"Tornado","description": "Flasche aufstellen, 3mal rumlaufen, zurück"},
+    {"text":"Kosmonaut","description": "vor dem werfen 3mal Finger aufs Bier laufen"},
+    {"text":"Caro","description": "Lutscher im Mund behalten - auch beim Trinken"},
+    {"text":"Ruschel","description": "eine Person im Spiel trinkt ein Mädchenbier und wenn ein normales Bier vorher leer ist, wird noch ein Mädchenbier getrunken"},
+    {"text":"Frisbee","description": "???"}
+  ]
+}

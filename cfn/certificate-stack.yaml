@@ -1,0 +1,9 @@
+region: us-east-1
+
+stacks:
+  login-certificate-stack:
+    template-url: templates/certificate.yaml
+    timeout: 1200
+    parameters:
+      dnsPrefix: 'login'
+      dnsBaseName: 'cornetto.cloud'

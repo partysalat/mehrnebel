@@ -1,0 +1,61 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Assets (S3 and Cloudfront) for flunkimat
+Parameters:
+  bucketName:
+    Description: Assets bucket name
+    Type: String
+  originId:
+    Description: an origin id for cloudfront
+    Type: String
+  originPath:
+    Description: an origin id for cloudfront
+    Type: String
+
+
+
+# -----------------------------------------------------------------------------------------
+Resources:
+# -----------------------------------------------------------------------------------------
+
+  S3AssetsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref bucketName
+
+
+  CloudfrontDistribution:
+    Type : AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        HttpVersion: http2
+        Origins:
+          - DomainName: !GetAtt S3AssetsBucket.DomainName
+            Id: !Ref originId
+            OriginPath: !Ref originPath
+            S3OriginConfig: {}
+
+#              DomainName: !GetAtt S3AssetsBucket.DomainName
+        PriceClass: PriceClass_100
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+          Compress: true
+          ForwardedValues:
+            QueryString: false
+          TargetOriginId: !Ref originId
+          ViewerProtocolPolicy: 'https-only'
+
+
+
+
+
+# -----------------------------------------------------------------------------------------
+# OUTPUTS
+# -----------------------------------------------------------------------------------------
+Outputs:
+  bucketName:
+    Value: '|Ref|S3AssetsBucket'
+    Description: assets s3 bucket resource name
+

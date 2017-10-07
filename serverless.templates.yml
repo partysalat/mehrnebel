@@ -1,0 +1,11 @@
+request-html:
+  template:
+    text/html: >
+      {
+        "stage": "$context.stage"
+      }
+response-html:
+  headers:
+    Content-Type: "'text/html'"
+    #Content-Type: 'text/html'
+  template: $input.path('$')

@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: DNS/Route53 config for cornetto.cloud
+Parameters:
+  dnsPrefix:
+    Description: DNS Domain prefix, e.g. 'flunkimat'
+    Type: String
+
+  dnsBaseName:
+    Description: DNS Domain , f.e. 'cornetto.cloud.'
+    ConstraintDescription: "Value must be a dns name and end with a dot"
+    AllowedPattern: ".*"
+    Type: String
+
+
+# -----------------------------------------------------------------------------------------
+Resources:
+# -----------------------------------------------------------------------------------------
+
+  # -----------------------------------------------------------------------------------------
+  # DNS Route53
+  # -----------------------------------------------------------------------------------------
+  Certificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: !Sub ${dnsPrefix}.${dnsBaseName}
+      DomainValidationOptions:
+      - DomainName: !Sub ${dnsPrefix}.${dnsBaseName}
+        ValidationDomain: '|Ref|dnsBaseName'
+
+# -----------------------------------------------------------------------------------------
+# OUTPUTS
+# -----------------------------------------------------------------------------------------
+Outputs:
+#  dnsRecord:
+#    Value: '|Ref|dnsRecord'
+#    Description: DB dns name
+  certificate:
+    Value: '|Ref|Certificate'
+    Description: certificate ARN
+

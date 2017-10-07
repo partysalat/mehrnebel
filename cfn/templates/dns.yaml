@@ -1,0 +1,72 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: DNS/Route53 config for cornetto.cloud
+Parameters:
+  apiGatewayEndpoint:
+    Description: Route of api gateway endpoint
+    Type: String
+  certificateArn:
+    Description: arn of the certificate
+    Type: String
+
+  dnsPrefix:
+    Description: DNS Domain prefix, e.g. 'flunkimat'
+    Type: String
+
+  dnsBaseName:
+    Description: DNS Domain , f.e. 'cornetto.cloud.'
+    ConstraintDescription: "Value must be a dns name and end with a dot"
+    AllowedPattern: ".*"
+    Type: String
+
+  apiGatewayStage:
+    Description: Stage of api gateway
+    Type: String
+    Default: dev
+
+  restApiId:
+    Description: Id of the api gateway rest api
+    Type: String
+
+
+# -----------------------------------------------------------------------------------------
+Resources:
+# -----------------------------------------------------------------------------------------
+
+  # -----------------------------------------------------------------------------------------
+  # DNS Route53
+  # -----------------------------------------------------------------------------------------
+  DomainName:
+    Type: "AWS::ApiGateway::DomainName"
+    Properties:
+      CertificateArn: !Ref certificateArn
+      DomainName: !Sub ${dnsPrefix}.${dnsBaseName}
+
+  Mapping:
+    Type: 'AWS::ApiGateway::BasePathMapping'
+    Properties:
+      DomainName: !Ref DomainName
+      RestApiId: !Ref restApiId
+      Stage: !Ref apiGatewayStage
+
+  DnsRecord:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      HostedZoneName: !Sub ${dnsBaseName}.
+      Comment: Route alias
+      Name: !Sub ${dnsPrefix}.${dnsBaseName}.
+      Type: A
+      AliasTarget:
+        DNSName: !GetAtt DomainName.DistributionDomainName
+        HostedZoneId: 'Z2FDTNDATAQYW2' #Zone Id for Cloudfront, see http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-aliastarget.html
+
+# -----------------------------------------------------------------------------------------
+# OUTPUTS
+# -----------------------------------------------------------------------------------------
+Outputs:
+  domainName:
+    Value: '|Ref|DomainName'
+    Description: domain name
+  distributionDomainName:
+    Value: !GetAtt DomainName.DistributionDomainName
+    Description: cloudfont distribution domain name
+

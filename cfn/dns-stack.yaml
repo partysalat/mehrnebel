@@ -1,0 +1,14 @@
+region: eu-west-1
+
+stacks:
+  login-dns-stack:
+    template-url: templates/dns.yaml
+    timeout: 1200
+    parameters:
+      apiGatewayEndpoint: '|Ref|login-dev.ServiceEndpoint'
+      dnsPrefix: 'login'
+      dnsBaseName: 'cornetto.cloud'
+      restApiId: '|Ref|login-dev.ApiGatewayRestApiId'
+      # cannot reference because of other region (needs to be us-east-1)
+      certificateArn: 'arn:aws:acm:us-east-1:111580521549:certificate/364bc0f0-1f9b-498a-9a98-a50b790abc8d'
+

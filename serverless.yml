@@ -1,0 +1,40 @@
+
+service: login # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+
+  stage: dev
+  region: eu-west-1
+  profile: default
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+custom:
+  webpack: ./webpack.server.config.js
+  webpackIncludeModules: true
+  serverless-offline:
+    location: "./lib/server/handlers"
+    babelOptions:
+      presets: ["es2015", "stage-2"]
+
+functions:
+  index:
+    handler: lib/server/handlers/indexHandler.login
+    events:
+      - http:
+          method: GET
+          path: /
+          integration: lambda
+          request: ${file(./serverless.templates.yml):request-html}
+          response: ${file(./serverless.templates.yml):response-html}
+
+resources:
+   Outputs:
+      ApiGatewayRestApiId:
+        Description: The Id of the restapi
+        Value:
+          'Ref': ApiGatewayRestApi
