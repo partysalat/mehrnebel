@@ -36,6 +36,7 @@
     "prop-types": "^15.5.10"
   },
   "devDependencies": {
+    "amazon-cognito-identity-js": "^1.21.0",
     "ava": "^0.16.0",
     "ava-spec": "^1.0.1",
     "babel-core": "^6.17.0",
@@ -69,6 +70,7 @@
     "postcss-loader": "^2.0.6",
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
+    "react-bootstrap": "^0.31.3",
     "react-dom": "^15.3.2",
     "require-dir": "^0.3.1",
     "serverless": "^1.22.0",

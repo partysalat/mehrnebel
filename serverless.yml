@@ -9,7 +9,8 @@ provider:
   region: eu-west-1
   profile: default
   environment:
-    USER_POOL: ${cf:login-cognito-userpool.cognitoArnPool}
+    USER_POOL_ID: ${cf:login-cognito-userpool.cognitoUserPool}
+    USER_POOL_CLIENT_ID: ${cf:login-cognito-userpool.cognitoUserPoolClient}
 
 
 plugins:

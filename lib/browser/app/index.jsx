@@ -1,79 +1,64 @@
 import React, { Component } from 'react';
+import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import './index.styl';
-import Card from './card/card';
-import gamble from './gambling/gambleService';
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      cards: [
-        { title: 'Modifier', open: false, key: 'modifier' },
-        { title: 'Basis', open: false, key: 'basis' },
-        { title: 'Special', open: false, key: 'special' },
-      ],
+      email: "",
+      password: ""
     };
   }
-  reset() {
-    this.setState((currentState) => {
-      currentState.cards.forEach((card) => {
-        card.open = false;// eslint-disable-line no-param-reassign
-      });
-      return currentState;
-    });
-  }
-  enableCards() {
-    this.setState((currentState) => {
-      const closedCard = currentState.cards.find(card => !card.open);
-      if (!closedCard) {
-        return currentState;
-      }
-      closedCard.open = !closedCard.open;
-      setTimeout(() => this.enableCards(), 1000, this);
-      return currentState;
-    });
-  }
-  gambleMode() {
-    this.reset();
-    const modes = gamble();
-    this.setState((currentState) => {
-      currentState.cards.forEach((card) => {
-        card.modeText = modes[card.key].text;// eslint-disable-line no-param-reassign
-        card.description = modes[card.key].description;// eslint-disable-line no-param-reassign
-      });
 
-      setTimeout(() => {
-        this.enableCards();
-      }, 1000);
+  validateForm() {
+    return this.state.email.length > 0 && this.state.password.length > 0;
+  }
 
-      return currentState;
+  handleChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
     });
   }
-  showExplanation(title, msg) { // eslint-disable-line class-methods-use-this
-    window.alert(`${title}: ${msg}`);// eslint-disable-line no-alert,no-undef,class-methods-use-this
+
+  handleSubmit = event => {
+    event.preventDefault();
+
+    
   }
+
   render() {
     return (
-      <div>
-        <h1 className="app-headline">Der Einarmige Flunkimat!</h1>
-        <button className="app-button" onClick={() => this.gambleMode()}>
-          Gamble
-        </button>
-
-        {this.state.cards.map(config =>
-          <div key={config.title} className="app-card">
-            <Card
-              title={config.title}
-              isOpen={config.open}
-              modeText={config.modeText}
-              onClick={() => this.showExplanation(config.modeText, config.description)}
+      <div className="Login">
+        <form onSubmit={this.handleSubmit}>
+          <FormGroup controlId="email" bsSize="large">
+            <ControlLabel>Email</ControlLabel>
+            <FormControl
+              autoFocus
+              type="email"
+              value={this.state.email}
+              onChange={this.handleChange}
             />
-          </div>
-        )}
-
+          </FormGroup>
+          <FormGroup controlId="password" bsSize="large">
+            <ControlLabel>Password</ControlLabel>
+            <FormControl
+              value={this.state.password}
+              onChange={this.handleChange}
+              type="password"
+            />
+          </FormGroup>
+          <Button
+            block
+            bsSize="large"
+            disabled={!this.validateForm()}
+            type="submit"
+          >
+            Login
+          </Button>
+        </form>
       </div>
     );
   }
 }
-
-export default App;
