@@ -58,4 +58,7 @@ Outputs:
   bucketName:
     Value: '|Ref|S3AssetsBucket'
     Description: assets s3 bucket resource name
+  distributionName:
+    Value: !GetAtt CloudfrontDistribution.DomainName
+    Description: domain name of cloudfront distribution
 

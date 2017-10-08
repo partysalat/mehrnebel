@@ -11,6 +11,7 @@ provider:
   environment:
     USER_POOL_ID: ${cf:login-cognito-userpool.cognitoUserPool}
     USER_POOL_CLIENT_ID: ${cf:login-cognito-userpool.cognitoUserPoolClient}
+    ASSETS_DOMAIN_NAME: ${cf:login-assets.distributionName}
 
 
 plugins:

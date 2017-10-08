@@ -11,7 +11,7 @@ module.exports = {
     app: './lib/browser/main.jsx',
   },
   output: {
-    filename: 'flunkimat-[hash].js',
+    filename: 'login-[hash].js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
