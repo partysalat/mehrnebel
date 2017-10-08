@@ -18,7 +18,7 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
-    new ExtractTextPlugin('flunkimat-[hash].css'),
+    new ExtractTextPlugin('login-[hash].css'),
     function () {
       this.plugin('done', (stats) => {
         mkdirp.sync(path.join(__dirname, 'target'));
