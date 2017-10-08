@@ -4,10 +4,13 @@ service: login # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs4.3
-
+  memorySize: 256
   stage: dev
   region: eu-west-1
   profile: default
+  environment:
+    USER_POOL: ${cf:login-cognito-userpool.cognitoArnPool}
+
 
 plugins:
   - serverless-webpack

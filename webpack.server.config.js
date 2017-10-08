@@ -24,12 +24,6 @@ module.exports = {
   // devtool: 'source-map',
   plugins: [
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new webpack.DefinePlugin({
-      'process.env': {
-        // This has effect on the react lib size
-        NODE_ENV: JSON.stringify('production'),
-      },
-    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         unused: true,

@@ -5,7 +5,7 @@ const
   rename = require('gulp-rename');
 const fs = require('fs');
 
-const cfnConfig = yaml.safeLoad(fs.readFileSync(`${__dirname}/../cfn/assets-stack.yaml`, 'utf8'));
+const cfnConfig = yaml.safeLoad(fs.readFileSync(`${__dirname}/../cfn/application-resources-stack.yaml`, 'utf8'));
 
 gulp.task('_aws:deploy', () => {
   const publisher = awspublish.create({
