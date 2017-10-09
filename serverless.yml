@@ -22,7 +22,7 @@ custom:
   webpack: ./webpack.server.config.js
   webpackIncludeModules: true
   serverless-offline:
-    location: "./lib/server/handlers"
+#    location: "./lib/server/handlers"
     babelOptions:
       presets: ["es2015", "stage-2"]
 
