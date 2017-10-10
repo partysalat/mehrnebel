@@ -33,7 +33,8 @@
   "dependencies": {
     "confidence": "^3.0.2",
     "lodash": "^4.16.4",
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "amazon-cognito-identity-js": "^1.21.0",
@@ -53,6 +54,7 @@
     "enzyme": "^2.5.1",
     "eslint": "^3.8.1",
     "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-es6-recommended": "^0.1.2",
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.4.1",
