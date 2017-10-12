@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-function querystring(name, url = window.location.href) {
-  name = name.replace(/[[]]/g, '\\$&');
+function querystring(nameQuery, url = window.location.href) {
+  const name = nameQuery.replace(/[[]]/g, '\\$&');
 
   const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`, 'i');
   const results = regex.exec(url);
@@ -23,11 +23,11 @@ export default ({ component: C, props: cProps, ...rest }) => {
     <Route
       {...rest}
       render={props =>
-        !cProps.isAuthenticated
+        (!cProps.isAuthenticated
           ? <C {...props} {...cProps} />
           : <Redirect
             to={redirect === '' || redirect === null ? '/' : redirect}
-          />}
+          />)}
     />
   );
 };

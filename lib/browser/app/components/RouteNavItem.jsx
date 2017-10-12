@@ -3,15 +3,15 @@ import { Route } from 'react-router-dom';
 import { NavItem } from 'react-bootstrap';
 
 export default props =>
-  <Route
+  (<Route
     path={props.href}
     exact
     children={({ match, history }) =>
-      <NavItem
+      (<NavItem
         onClick={e => history.push(e.currentTarget.getAttribute('href'))}
         {...props}
         active={!!match}
       >
         {props.children}
-      </NavItem>}
-  />;
+      </NavItem>)}
+  />);

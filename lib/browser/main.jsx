@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import App from './app';
+import App from './app/App';
 
 import './main.styl';
 
@@ -12,6 +12,6 @@ render(
   <Router>
     <App />
   </Router>,
-  rootElement
+  rootElement,
 );
 

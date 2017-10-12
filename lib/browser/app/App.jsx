@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import { Nav, NavItem, Navbar } from "react-bootstrap";
-import Routes from "./router";
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { Nav, NavItem, Navbar } from 'react-bootstrap';
+import Routes from './router';
 // import { authUser, signOutUser } from "./libs/awsLib";
-import RouteNavItem from "./components/RouteNavItem";
+import RouteNavItem from './components/RouteNavItem';
 
 class App extends Component {
   constructor(props) {
@@ -11,24 +11,23 @@ class App extends Component {
 
     this.state = {
       isAuthenticated: false,
-      isAuthenticating: false
+      isAuthenticating: false,
     };
   }
 
 
-
-  handleLogout = event => {
+  handleLogout = () => {
     // signOutUser();
 
     this.userHasAuthenticated(false);
 
-    this.props.history.push("/login");
+    this.props.history.push('/login');
   }
 
   render() {
     const childProps = {
       isAuthenticated: this.state.isAuthenticated,
-      userHasAuthenticated: this.userHasAuthenticated
+      userHasAuthenticated: this.userHasAuthenticated,
     };
 
     return (
@@ -51,7 +50,7 @@ class App extends Component {
                   </RouteNavItem>,
                   <RouteNavItem key={2} href="/">
                     Login
-                  </RouteNavItem>
+                  </RouteNavItem>,
                 ]}
             </Nav>
           </Navbar.Collapse>
