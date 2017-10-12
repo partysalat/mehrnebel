@@ -6,7 +6,7 @@ export default props =>
   (<Route
     path={props.href}
     exact
-    children={({ match, history }) =>
+    children={({ match, history }) =>// eslint-disable-line
       (<NavItem
         onClick={e => history.push(e.currentTarget.getAttribute('href'))}
         {...props}
