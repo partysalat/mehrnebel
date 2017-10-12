@@ -57,6 +57,12 @@ export default class Signup extends Component {
           newUser,
           isLoading: false,
         });
+      })
+      .catch((e) => {
+        window.alert(e.message);
+        this.setState({
+          isLoading: false,
+        });
       });
   }
 
