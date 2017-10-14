@@ -15,3 +15,9 @@ stacks:
     timeout: 1200
     parameters:
       poolName: 'cornetto'
+      domainName: 'cornetto'
+      customResourceServiceToken: '|Ref|customResource.ServiceToken'
+
+  customResource:
+    template-url: templates/customResource.yaml
+    timeout: 1200

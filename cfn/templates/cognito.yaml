@@ -4,6 +4,13 @@ Parameters:
   poolName:
     Description: Cognito User Pool Name
     Type: String
+  domainName:
+    Description: Cognito Url Domain Name
+    Type: String
+  customResourceServiceToken:
+    Description: Service token for custom resource
+    Type: String
+
 
 # -----------------------------------------------------------------------------------------
 Resources:
@@ -40,6 +47,26 @@ Resources:
       ClientName: !Sub ${poolName}-client
       GenerateSecret: false
       UserPoolId: !Ref CognitoUserPool
+
+  UserPoolDomain:
+    Type: Custom::CognitoUserPoolDomain
+    Properties:
+      ServiceToken: !Ref customResourceServiceToken
+      Service: CognitoIdentityServiceProvider
+      PhysicalResourceId: !Ref domainName
+      Parameters:
+        UserPoolId: !Ref CognitoUserPool
+        Domain: !Ref domainName
+      Create:
+        Action: createUserPoolDomain
+      Update:
+        # Updates are not fully supported. This will delete the previous domain name.
+        # You will have to create the new domain name manually through the API or console.
+        Action: deleteUserPoolDomain
+        IgnoreErrors: true
+      Delete:
+        Action: deleteUserPoolDomain
+        IgnoreErrors: true
 
 
 
