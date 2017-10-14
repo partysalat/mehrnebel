@@ -84,4 +84,8 @@ Outputs:
   cognitoUserPoolClient:
     Value: !Ref UserPoolClient
     Description: Cognito User Pool ARN
+  userPoolDomain:
+    Value: !Sub ${UserPoolDomain}.auth.${AWS::Region}.amazoncognito.com
+    Description: User Pool Domain
+
 
