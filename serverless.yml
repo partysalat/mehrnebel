@@ -11,6 +11,7 @@ provider:
   environment:
     USER_POOL_ID: ${cf:login-cognito-userpool.cognitoUserPool}
     USER_POOL_CLIENT_ID: ${cf:login-cognito-userpool.cognitoUserPoolClient}
+    USER_POOL_LOGIN_URL: ${cf:login-cognito-userpool.userPoolDomain}
     ASSETS_DOMAIN_NAME: ${cf:mehrnebel-assets.distributionName}
 
 
