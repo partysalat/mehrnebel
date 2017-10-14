@@ -38,6 +38,7 @@
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
+    "amazon-cognito-auth-js": "^1.0.0",
     "amazon-cognito-identity-js": "^1.21.0",
     "ava": "^0.16.0",
     "ava-spec": "^1.0.1",
