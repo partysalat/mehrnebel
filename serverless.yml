@@ -1,5 +1,5 @@
 
-service: login # NOTE: update this with your service name
+service: mehrnebel # NOTE: update this with your service name
 
 provider:
   name: aws
@@ -11,7 +11,7 @@ provider:
   environment:
     USER_POOL_ID: ${cf:login-cognito-userpool.cognitoUserPool}
     USER_POOL_CLIENT_ID: ${cf:login-cognito-userpool.cognitoUserPoolClient}
-    ASSETS_DOMAIN_NAME: ${cf:login-assets.distributionName}
+    ASSETS_DOMAIN_NAME: ${cf:mehrnebel-assets.distributionName}
 
 
 plugins:
@@ -33,15 +33,6 @@ functions:
       - http:
           method: GET
           path: /
-          integration: lambda
-          request: ${file(./serverless.templates.yml):request-html}
-          response: ${file(./serverless.templates.yml):response-html}
-  signup:
-    handler: lib/server/handlers/indexHandler.login
-    events:
-      - http:
-          method: GET
-          path: /signup
           integration: lambda
           request: ${file(./serverless.templates.yml):request-html}
           response: ${file(./serverless.templates.yml):response-html}

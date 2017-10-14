@@ -11,7 +11,7 @@ gulp.task('_aws:deploy', () => {
   const publisher = awspublish.create({
     region: cfnConfig.region,
     params: {
-      Bucket: cfnConfig.stacks['login-assets'].parameters.bucketName,
+      Bucket: cfnConfig.stacks['mehrnebel-assets'].parameters.bucketName,
       ACL: 'public-read',
     },
   }, {
@@ -23,7 +23,7 @@ gulp.task('_aws:deploy', () => {
 
   return gulp.src('./target/assets/**/*')
     .pipe(rename((path) => {
-      path.dirname += cfnConfig.stacks['login-assets'].parameters.originPath;
+      path.dirname += cfnConfig.stacks['mehrnebel-assets'].parameters.originPath;
     }))
     .pipe(publisher.publish(headers))
     .pipe(awspublish.reporter());

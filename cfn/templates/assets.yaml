@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Assets (S3 and Cloudfront) for flunkimat
+Description: Assets (S3 and Cloudfront) for mehrnebel
 Parameters:
   bucketName:
     Description: Assets bucket name
@@ -8,7 +8,7 @@ Parameters:
     Description: an origin id for cloudfront
     Type: String
   originPath:
-    Description: an origin id for cloudfront
+    Description: an origin path for cloudfront (folder in s3)
     Type: String
 
 

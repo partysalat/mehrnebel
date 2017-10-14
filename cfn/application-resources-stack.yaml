@@ -1,23 +1,11 @@
 region: eu-west-1
 
 stacks:
-  login-assets:
+  mehrnebel-assets:
     template-url: templates/assets.yaml
     timeout: 1200
     parameters:
-      bucketName: 'cornetto-login-assets'
+      bucketName: 'mehrnebel-assets'
       # random identifier
-      originId: 's3-cornetto-login-assets'
+      originId: 's3-mehrnebel-assets'
       originPath: '/assets'
-
-  login-cognito-userpool:
-    template-url: templates/cognito.yaml
-    timeout: 1200
-    parameters:
-      poolName: 'cornetto'
-      domainName: 'cornetto'
-      customResourceServiceToken: '|Ref|customResource.ServiceToken'
-
-  customResource:
-    template-url: templates/customResource.yaml
-    timeout: 1200
