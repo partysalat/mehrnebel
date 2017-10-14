@@ -11,14 +11,14 @@ module.exports = {
     app: './lib/browser/main.jsx',
   },
   output: {
-    filename: 'login-[hash].js',
+    filename: 'mehrnebel-[hash].js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   devtool: 'source-map',
   plugins: [
-    new ExtractTextPlugin('login-[hash].css'),
+    new ExtractTextPlugin('mehrnebel-[hash].css'),
     function () {
       this.plugin('done', (stats) => {
         mkdirp.sync(path.join(__dirname, 'target'));
