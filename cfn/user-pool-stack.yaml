@@ -9,6 +9,7 @@ stacks:
       domainName: 'cornetto'
       customResourceServiceToken: '|Ref|customResource.ServiceToken'
 
+
   customResource:
     template-url: templates/customResource.yaml
     timeout: 1200

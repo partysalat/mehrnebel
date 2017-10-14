@@ -68,7 +68,24 @@ Resources:
         Action: deleteUserPoolDomain
         IgnoreErrors: true
 
-
+  UserPoolClientSettings:
+    Type: Custom::CognitoUserPoolClientSettings
+    Properties:
+      ServiceToken: !Ref customResourceServiceToken
+      Service: CognitoIdentityServiceProvider
+      Create:
+        Action: updateUserPoolClient
+        Parameters:
+          UserPoolId: !Ref CognitoUserPool
+          ClientId: !Ref UserPoolClient
+          AllowedOAuthFlows: [code, implicit]
+          AllowedOAuthScopes: [openid]
+          SupportedIdentityProviders: [COGNITO]
+          AllowedOAuthFlowsUserPoolClient: true
+          CallbackURLs:
+            - 'https://mehrnebel.cornetto.cloud'
+          LogoutUrls:
+            - 'https://dutrinkst.cornetto.cloud'
 
 
 # -----------------------------------------------------------------------------------------
