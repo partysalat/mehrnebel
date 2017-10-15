@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Login.styl';
-import login from './loginService';
+import { login } from './authService';
 
 export default class Login extends Component {
   constructor(props) {
