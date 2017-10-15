@@ -44,6 +44,12 @@ functions:
           method: GET
           path: /create-fog
           integration: lambda
+          authorizer:
+            arn: ${cf:login-cognito-userpool.cognitoArnPool}
+            claims:
+              - email
+              - name
+              - cognito:username
 
 resources:
    Outputs:
