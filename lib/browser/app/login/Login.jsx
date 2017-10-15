@@ -3,9 +3,8 @@ import './Login.styl';
 import { login } from './authService';
 import getInstance from './httpService';
 
-async function createFog() {
-  const axios = await getInstance();
-  return axios.get('/create-fog').then((res) => {
+function createFog() {
+  return getInstance().get('/create-fog').then((res) => {
     console.log(res.data);
   });
 }
