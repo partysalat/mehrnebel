@@ -5,6 +5,7 @@ let
 module.exports = {
   entry: {
     indexHandler: './lib/server/handlers/indexHandler.js',
+    pushHandler: './lib/server/handlers/pushHandler.js',
   },
   output: {
     libraryTarget: 'commonjs',

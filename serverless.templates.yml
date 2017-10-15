@@ -9,3 +9,15 @@ response-html:
     Content-Type: "'text/html'"
     #Content-Type: 'text/html'
   template: $input.path('$')
+
+request-json:
+  template:
+    application/json: >
+      {
+        "stage": "$context.stage"
+      }
+response-json:
+  headers:
+    Content-Type: "'application/json'"
+    #Content-Type: 'text/html'
+  template: $input.path('$')

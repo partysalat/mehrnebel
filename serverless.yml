@@ -37,6 +37,13 @@ functions:
           integration: lambda
           request: ${file(./serverless.templates.yml):request-html}
           response: ${file(./serverless.templates.yml):response-html}
+  createFog:
+    handler: lib/server/handlers/pushHandler.createFog
+    events:
+      - http:
+          method: GET
+          path: /create-fog
+          integration: lambda
 
 resources:
    Outputs:
