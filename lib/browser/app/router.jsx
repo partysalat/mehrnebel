@@ -1,13 +1,18 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
-import AppliedRoute from './components/Route';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
 import Login from './login/Login';
 import Buzzer from './buzzer/Buzzer';
 
+
 export default ({ childProps }) => (
-  <Switch>
-    <AppliedRoute path="/" exact component={Login} props={childProps} />
-    <AppliedRoute path="/buzzer" exact component={Buzzer} props={childProps} />
-    { /* Finally, catch all unmatched routes */ }
-  </Switch>);
+  <Router>
+    <div>
+      <ul>
+        <li><Link to="/">Public Page</Link></li>
+        <li><Link to="/buzzer">Buzzer</Link></li>
+      </ul>
+      <Route exact path="/" component={Login} />
+      <Route exact path="/buzzer" component={Buzzer} />
+    </div>
+  </Router>);

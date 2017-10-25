@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Buzzer.styl';
+import ArcadeButton from './arcadeButton/ArcadeButton';
 
 export default class Buzzer extends Component {
   constructor(props) {
@@ -16,7 +17,9 @@ export default class Buzzer extends Component {
 
   render() {
     return (
-      <div>BUZZER</div>
+      <div>
+        <ArcadeButton />
+      </div>
     );
   }
 }
