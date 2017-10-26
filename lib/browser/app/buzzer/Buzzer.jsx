@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import './Buzzer.styl';
 import ArcadeButton from './arcadeButton/ArcadeButton';
+import getInstance from './../login/httpService';
 
 export default class Buzzer extends Component {
+  static createFog() {
+    return getInstance().get('/create-fog').then((res) => {
+      console.log(res.data);
+    });
+  }
+
   constructor(props) {
     super(props);
     this.state = { };
   }
 
-  handleConfirmationSubmit(event) {
-    event.preventDefault();
-    confirm(this.state.newUser, this.state.confirmationCode).then(() => {
-      this.setState({ isLoading: true });
-    });
-  }
-
   render() {
     return (
       <div>
-        <ArcadeButton />
+        <ArcadeButton onClick={Buzzer.createFog} />
       </div>
     );
   }

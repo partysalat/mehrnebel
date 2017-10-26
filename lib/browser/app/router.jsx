@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
 import Login from './login/Login';
 import Buzzer from './buzzer/Buzzer';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
-export default ({ childProps }) => (
+export default () => (
   <Router>
     <div>
       <ul>
@@ -13,6 +14,6 @@ export default ({ childProps }) => (
         <li><Link to="/buzzer">Buzzer</Link></li>
       </ul>
       <Route exact path="/" component={Login} />
-      <Route exact path="/buzzer" component={Buzzer} />
+      <ProtectedRoute exact path="/buzzer" component={Buzzer} />
     </div>
   </Router>);

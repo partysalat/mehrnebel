@@ -83,7 +83,7 @@ Resources:
           SupportedIdentityProviders: [COGNITO]
           AllowedOAuthFlowsUserPoolClient: true
           CallbackURLs:
-            - 'https://mehrnebel.cornetto.cloud'
+            - 'https://mehrnebel.cornetto.cloud/buzzer'
 #          LogoutUrls:
 #            - 'https://dutrinkst.cornetto.cloud'
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { Nav, NavItem, Navbar } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
 import Routes from './router';
+
 // import { authUser, signOutUser } from "./libs/awsLib";
 
 class App extends Component {
@@ -14,14 +14,6 @@ class App extends Component {
     };
   }
 
-
-  handleLogout = () => {
-    // signOutUser();
-
-    this.userHasAuthenticated(false);
-
-    this.props.history.push('/login');
-  }
 
   render() {
     const childProps = {
