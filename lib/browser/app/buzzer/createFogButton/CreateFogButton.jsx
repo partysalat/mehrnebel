@@ -14,7 +14,7 @@ class CreateFogButton extends Component {
   }
   reset() {
     clearTimeout(this.state.timeout);
-    this.setState(currentState => ({ ...currentState, pressed: false }));
+    this.setState(currentState => ({ ...currentState, pressed: false, timeout: null }));
   }
 
   handleOnPressUp= () => {
