@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Buzzer.styl';
-import ArcadeButton from './arcadeButton/ArcadeButton';
+import CreateFogButton from './createFogButton/CreateFogButton';
 import getInstance from './../login/httpService';
 
 export default class Buzzer extends Component {
@@ -18,7 +18,7 @@ export default class Buzzer extends Component {
   render() {
     return (
       <div>
-        <ArcadeButton onClick={Buzzer.createFog} />
+        <CreateFogButton createFog={Buzzer.createFog} />
       </div>
     );
   }
