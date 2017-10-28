@@ -78,7 +78,7 @@ Resources:
         Parameters:
           UserPoolId: !Ref CognitoUserPool
           ClientId: !Ref UserPoolClient
-          AllowedOAuthFlows: [code, implicit]
+          AllowedOAuthFlows: [code]
           AllowedOAuthScopes: [openid]
           SupportedIdentityProviders: [COGNITO]
           AllowedOAuthFlowsUserPoolClient: true
