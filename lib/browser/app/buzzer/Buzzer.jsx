@@ -4,8 +4,9 @@ import CreateFogButton from './createFogButton/CreateFogButton';
 import getInstance from './../login/httpService';
 
 export default class Buzzer extends Component {
-  static createFog() {
-    return getInstance().get('/create-fog').then((res) => {
+  static async createFog() {
+    const client = await getInstance();
+    return client.get('/create-fog').then((res) => {
       console.log(res.data);
     });
   }
