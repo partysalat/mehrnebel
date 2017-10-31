@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 import './Login.styl';
 import { login } from './authService';
 
@@ -11,9 +12,7 @@ export default class Login extends Component {
     };
   }
 
-  handleLogin= () => {
-    console.log(this.props);
-
+  handleLogin = () => {
     login()
       .then(() => {
         this.props.history.push('/buzzer');
@@ -23,7 +22,7 @@ export default class Login extends Component {
   render() {
     return (
       <div className="Login">
-        <button onClick={this.handleLogin} >Login</button>
+        <Button onClick={this.handleLogin} bsStyle="default" bsSize="large">Login</Button>
       </div>
     );
   }

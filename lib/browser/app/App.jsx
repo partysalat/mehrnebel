@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Routes from './router';
+import './App.styl';
 
 // import { authUser, signOutUser } from "./libs/awsLib";
 
