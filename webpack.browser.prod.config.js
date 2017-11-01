@@ -12,7 +12,6 @@ webpackConfig.plugins = webpackConfig.plugins.concat(
       NODE_ENV: JSON.stringify('production'),
     },
   }),
-  new webpack.optimize.DedupePlugin(),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
       unused: true,
