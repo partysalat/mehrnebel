@@ -9,10 +9,3 @@ stacks:
       # random identifier
       originId: 's3-mehrnebel-assets'
       originPath: '/assets'
-
-  mehrnebel-dynamo-db:
-    template-url: templates/dynamodb.yaml
-    timeout: 1200
-    parameters:
-      readCapacity: 1
-      writeCapacity: 1

@@ -17,13 +17,19 @@ provider:
 
 plugins:
   - serverless-webpack
+  - serverless-dynamodb-local
   - serverless-offline
+
 
 custom:
   webpack: ./webpack.server.config.js
   webpackIncludeModules: true
+  dynamodb:
+    start:
+      migrate: true
+      port: 8000
   serverless-offline:
-#    location: "./lib/server/handlers"
+    port: 2999
     babelOptions:
       presets: ["es2015", "stage-2"]
 
@@ -58,7 +64,26 @@ functions:
               - cognito:username
 
 resources:
+   Resources:
+     userStatsTable:
+       Type: AWS::DynamoDB::Table
+       Properties:
+         TableName: usersStatsTable
+         AttributeDefinitions:
+           - AttributeName: username
+             AttributeType: S
+         KeySchema:
+           - AttributeName: username
+             KeyType: HASH
+         ProvisionedThroughput:
+           ReadCapacityUnits: 1
+           WriteCapacityUnits: 1
    Outputs:
+      UsersStatsTable:
+        Description: The Id of the restapi
+        Value:
+          'Ref': userStatsTable
+
       ApiGatewayRestApiId:
         Description: The Id of the restapi
         Value:
