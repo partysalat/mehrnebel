@@ -13,6 +13,8 @@ provider:
     USER_POOL_CLIENT_ID: ${cf:login-cognito-userpool.cognitoUserPoolClient}
     USER_POOL_LOGIN_URL: ${cf:login-cognito-userpool.userPoolDomain}
     ASSETS_DOMAIN_NAME: ${cf:mehrnebel-assets.distributionName}
+    DYNAMO_REGION: ${opt:region}
+    DYNAMO_TABLE_NAME: usersStatsTable
 
 
 plugins:
@@ -78,12 +80,27 @@ resources:
          ProvisionedThroughput:
            ReadCapacityUnits: 1
            WriteCapacityUnits: 1
+     DynamoDBIamPolicy:
+       Type: AWS::IAM::Policy
+       DependsOn: userStatsTable
+       Properties:
+         PolicyName: lambda-dynamodb
+         PolicyDocument:
+           Version: '2012-10-17'
+           Statement:
+             - Effect: Allow
+               Action:
+                 - dynamodb:GetItem
+                 - dynamodb:PutItem
+                 - dynamodb:UpdateItem
+               Resource: arn:aws:dynamodb:*:*:table/usersStatsTable
+         Roles:
+           - Ref: IamRoleLambdaExecution
    Outputs:
-      UsersStatsTable:
+      UsersStatsTableName:
         Description: The Id of the restapi
         Value:
           'Ref': userStatsTable
-
       ApiGatewayRestApiId:
         Description: The Id of the restapi
         Value:
