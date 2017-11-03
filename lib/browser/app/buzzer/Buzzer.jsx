@@ -29,9 +29,12 @@ export default class Buzzer extends Component {
   }
 
   render() {
+    const user = (this.state.user && this.state.user.stats) || {};
     return (
       <div>
-        <div>{JSON.stringify(this.state.user)}</div>
+        <div>Eingelogged als: {user.username}</div>
+        <div>Knopf gedrückt: {user.counter}x</div>
+
         <CreateFogButton createFog={this.createFogAndUpdateState} />
       </div>
     );
