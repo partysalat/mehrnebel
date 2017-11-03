@@ -6,7 +6,7 @@ import getInstance from './../login/httpService';
 export default class Buzzer extends Component {
   static async createFog() {
     const client = await getInstance();
-    return client.get('/create-fog').then((res) => {
+    return client.put('/api/create-fog').then((res) => {
       console.log(res.data);
     });
   }

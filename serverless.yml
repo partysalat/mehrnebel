@@ -55,8 +55,21 @@ functions:
     handler: lib/server/handlers/pushHandler.createFog
     events:
       - http:
+          method: PUT
+          path: /api/create-fog
+          integration: lambda
+          authorizer:
+            arn: ${cf:login-cognito-userpool.cognitoArnPool}
+            claims:
+              - email
+              - name
+              - cognito:username
+  getUser:
+    handler: lib/server/handlers/pushHandler.getUser
+    events:
+      - http:
           method: GET
-          path: /create-fog
+          path: /api/user
           integration: lambda
           authorizer:
             arn: ${cf:login-cognito-userpool.cognitoArnPool}
