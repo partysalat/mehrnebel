@@ -22,7 +22,7 @@ export default class Buzzer extends Component {
     this.setState(currentState => ({ ...currentState, user: user.data.data }));
   }
   createFogAndUpdateState = () => {
-    Buzzer.createFog()
+    return Buzzer.createFog()
       .then((user) => {
         this.setState(currentState => ({ ...currentState, user: user.data.data }));
       });
