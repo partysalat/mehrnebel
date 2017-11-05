@@ -4,4 +4,5 @@ node_modules/
 .idea/
 target/
 .webpack/
+cfn/csr
 npm-debug.log

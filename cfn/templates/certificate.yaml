@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: DNS/Route53 config for cornetto.cloud
 Parameters:
   dnsPrefix:
-    Description: DNS Domain prefix, e.g. 'flunkimat'
+    Description: DNS Domain prefix, e.g. 'mehrnebel'
     Type: String
 
   dnsBaseName:

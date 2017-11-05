@@ -1,0 +1,10 @@
+region: eu-central-1
+
+stacks:
+  thing-smoke-machine:
+    template-url: templates/iot-thing.yaml
+    timeout: 1200
+    parameters:
+      thingName: 'smokemachine'
+      csrRequest: >
+        <your certificate request>

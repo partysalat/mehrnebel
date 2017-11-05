@@ -6,7 +6,7 @@ provider:
   runtime: nodejs4.3
   memorySize: 256
   stage: dev
-  region: eu-west-1
+  region: eu-central-1
   profile: default
   environment:
     USER_POOL_ID: ${cf:login-cognito-userpool.cognitoUserPool}

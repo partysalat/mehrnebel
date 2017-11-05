@@ -1,0 +1,61 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS IOT Things
+Parameters:
+  thingName:
+    Description: Assets bucket name
+    Type: String
+  csrRequest:
+    Description: Assets bucket name
+    Type: String
+
+# -----------------------------------------------------------------------------------------
+Resources:
+# -----------------------------------------------------------------------------------------
+  IOTThing:
+    Type: "AWS::IoT::Thing"
+    Properties:
+      ThingName: !Ref thingName
+
+  IOTCertificate:
+    Type: "AWS::IoT::Certificate"
+    Properties:
+      CertificateSigningRequest: !Ref csrRequest
+      # One of ACTIVE, REGISTER_INACTIVE, INACTIVE, PENDING_TRANSFER, PENDING_ACTIVATION, REVOKED
+      Status: "ACTIVE"
+
+  IOTPolicy:
+    Type: "AWS::IoT::Policy"
+    Properties:
+      PolicyName: !Sub ${thingName}Policy
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          -
+            Effect: "Allow"
+            Action:
+              - "iot:*"
+            Resource:
+              - "*"
+  IOTPolicyAttachment:
+    Type: "AWS::IoT::PolicyPrincipalAttachment"
+    Properties:
+      PolicyName: !Ref IOTPolicy
+      Principal: !GetAtt IOTCertificate.Arn
+
+  IOTThingAttachment:
+    Type: "AWS::IoT::ThingPrincipalAttachment"
+    Properties:
+      Principal: !GetAtt IOTCertificate.Arn
+      ThingName: !Ref IOTThing
+
+# -----------------------------------------------------------------------------------------
+# OUTPUTS
+# -----------------------------------------------------------------------------------------
+Outputs:
+  thingName:
+    Value: '|Ref|thingName'
+    Description: Name of a thing
+  thingArn:
+    Value: '|Ref|thingName'
+    Description: Name of a thing
+
