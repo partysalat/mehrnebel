@@ -13,6 +13,7 @@ provider:
     USER_POOL_CLIENT_ID: ${cf:login-cognito-userpool.cognitoUserPoolClient}
     USER_POOL_LOGIN_URL: ${cf:login-cognito-userpool.userPoolDomain}
     ASSETS_DOMAIN_NAME: ${cf:mehrnebel-assets.distributionName}
+    IOT_ENDPOINT: ${cf:thing-smoke-machine.thingEndpoint}
     DYNAMO_REGION: ${opt:region}
     DYNAMO_TABLE_NAME: usersStatsTable
 
@@ -107,6 +108,19 @@ resources:
                  - dynamodb:PutItem
                  - dynamodb:UpdateItem
                Resource: arn:aws:dynamodb:*:*:table/usersStatsTable
+         Roles:
+           - Ref: IamRoleLambdaExecution
+     IotIamPolicy:
+       Type: AWS::IAM::Policy
+       Properties:
+         PolicyName: lambda-iot
+         PolicyDocument:
+           Version: '2012-10-17'
+           Statement:
+             - Effect: Allow
+               Action:
+                 - iot:Publish
+               Resource: arn:aws:iot:*:*:topic/mehrnebel
          Roles:
            - Ref: IamRoleLambdaExecution
    Outputs:
