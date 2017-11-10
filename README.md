@@ -1,4 +1,6 @@
-# Single Sign On for cornetto cloud services
+# Mehrnebel!
+How often did it happen to you that you have a fog machine and just everybody wants to press the button.
+Because there is an app for almost everything today, mehrnebel! is the one for that.  
 
 ## Local Development
 Just start 
@@ -7,7 +9,7 @@ npm run watch
 ```
 and go to http://localhost:3000
  
-This will spawn the serverless offline plugin and starts a browsersync instance.
+This will spawn the serverless offline plugin, dynamodb and starts a browsersync instance.
 Also all your files are watched and the browser reloads itself on changes.
 
 The tests are executed with ava, whenever you save your changes, the unit tests are executed immediately.
@@ -16,8 +18,7 @@ There is no hot module replacement, because it requires a lot of overhead if you
 ## Deployment
 ### Serverless
 * You have to have valid AWS credentials in your .aws folder or as environment variables.
-* you should change under gulp/s3-deploy your S3 location for the assets. (can be created with CFN template as well -> see assets.stack.yaml)
-* change in lib/server/config/config.js the location of these assets (I used cloudfront as a CDN which I configured without cloudformation). (see https://github.com/hapijs/confidence to know how the config file works)
+* you should change under gulp/s3-deploy your S3 location for the assets. (shouldbe created with CFN template as well -> see aaplication-resources-stack.yaml)
 * If you like, you can change the serverless.yml to your service name and your custom configs. 
 
 Then you just have to run 
