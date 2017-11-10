@@ -6,5 +6,6 @@ stacks:
     timeout: 1200
     parameters:
       thingName: 'smokemachine'
+      customResourceServiceToken: '|Ref|customResource.ServiceToken'
       csrRequest: >
         <your certificate request>

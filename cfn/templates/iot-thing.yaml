@@ -7,6 +7,9 @@ Parameters:
   csrRequest:
     Description: Assets bucket name
     Type: String
+  customResourceServiceToken:
+    Description: Service token for custom resource
+    Type: String
 
 # -----------------------------------------------------------------------------------------
 Resources:
@@ -48,6 +51,19 @@ Resources:
       Principal: !GetAtt IOTCertificate.Arn
       ThingName: !Ref IOTThing
 
+  IOTEndpoint:
+      Type: Custom::IOTEndpoint
+      Properties:
+        ServiceToken: !Ref customResourceServiceToken
+        Service: Iot
+#        PhysicalResourceId: !Ref domainName
+        Parameters: {}
+#          UserPoolId: !Ref CognitoUserPool
+#          Domain: !Ref domainName
+        Create:
+          Action: describeEndpoint
+        Update:
+          Action: describeEndpoint
 # -----------------------------------------------------------------------------------------
 # OUTPUTS
 # -----------------------------------------------------------------------------------------
@@ -57,5 +73,8 @@ Outputs:
     Description: Name of a thing
   thingArn:
     Value: '|Ref|thingName'
+    Description: Name of a thing
+  thingEndpoint:
+    Value: '|GetAtt|IOTEndpoint|endpointAddress'
     Description: Name of a thing
 
