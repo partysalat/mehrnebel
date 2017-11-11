@@ -5,7 +5,21 @@ stacks:
     template-url: templates/iot-thing.yaml
     timeout: 1200
     parameters:
-      thingName: 'smokemachine'
+      thingName: 'smokemachine-1'
       customResourceServiceToken: '|Ref|customResource.ServiceToken'
       csrRequest: >
-        <your certificate request>
+        -----BEGIN CERTIFICATE REQUEST-----
+        MIICajCCAVICAQAwJTEWMBQGA1UEAxQNYXdzX2lvdF90aGluZzELMAkGA1UEBhMC
+        REUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC/pAlBcAEb+6WCZler
+        OpayjZ9CsxiYblBVt6YwBH8FRd8pUnusvLeprCjLPj4rnN6uUHW3KuD4PBMrj6GC
+        j0VHmkxf4HBW0HMgtHlEm+Z4+neJ+gYDkxyVhrL/A8YUAlj5ca8Vt5POpNHpLWyQ
+        TDDCJGc+GowqiAyxO0JArwuDNPAeERHFBc8ZOfknYXl+UCfofr+mcAcbCP5vvjOB
+        roZQcvIVyhbHNecVMf/7j5dvdErzKiSv53Uewn06Jpm1wPuKnza/gDcU+XfA5MWb
+        E2vMhZcamCy8Stukj4Kdo8FgX1TLtDK/yWlSNuNCo1Sv9Hbquo/nguw6I9igvykJ
+        d1DbAgMBAAGgADANBgkqhkiG9w0BAQsFAAOCAQEALGz1rWEY2RhbzAuKwJrAC7wF
+        KURsuFEqpYe0ge3btTgWQ9BByhLNWi+NPQHe95Uiy5n8YmmBdWL1qFxg1Vl0YWRc
+        yV2tAtsFGmhPVu/z9yMlmG8UF1oncYH/9b/pRNELIHu84WPZUdHphswILX5jfebK
+        ulVNWQ0PhadrnH12T8zQnLGofKou9NRbm1FZonbJUtZI1caO8sZuhjpUsIH2Y8Ij
+        iDJlKAcz5v/6m71VfS+NVKvqen7mp1hJ6rFsUM8euULygDTx5xJuxbXPrhLw2Bvh
+        NcI9l45uaofkeDzhiUQnXwGUqq8iLPgnVlBNUu4cMbi5hgigtsmn66DZvj3YWA==
+        -----END CERTIFICATE REQUEST-----
