@@ -8,6 +8,18 @@ provider:
   stage: dev
   region: eu-central-1
   profile: default
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+      Resource: arn:aws:dynamodb:*:*:table/usersStatsTable
+    - Effect: Allow
+      Action:
+        - iot:Publish
+      Resource: arn:aws:iot:*:*:topic/mehrnebel
+
   environment:
     USER_POOL_ID: ${cf:login-cognito-userpool.cognitoUserPool}
     USER_POOL_CLIENT_ID: ${cf:login-cognito-userpool.cognitoUserPoolClient}
@@ -94,35 +106,7 @@ resources:
          ProvisionedThroughput:
            ReadCapacityUnits: 1
            WriteCapacityUnits: 1
-     DynamoDBIamPolicy:
-       Type: AWS::IAM::Policy
-       DependsOn: userStatsTable
-       Properties:
-         PolicyName: lambda-dynamodb
-         PolicyDocument:
-           Version: '2012-10-17'
-           Statement:
-             - Effect: Allow
-               Action:
-                 - dynamodb:GetItem
-                 - dynamodb:PutItem
-                 - dynamodb:UpdateItem
-               Resource: arn:aws:dynamodb:*:*:table/usersStatsTable
-         Roles:
-           - Ref: IamRoleLambdaExecution
-     IotIamPolicy:
-       Type: AWS::IAM::Policy
-       Properties:
-         PolicyName: lambda-iot
-         PolicyDocument:
-           Version: '2012-10-17'
-           Statement:
-             - Effect: Allow
-               Action:
-                 - iot:Publish
-               Resource: arn:aws:iot:*:*:topic/mehrnebel
-         Roles:
-           - Ref: IamRoleLambdaExecution
+
    Outputs:
       UsersStatsTableName:
         Description: The Id of the restapi
