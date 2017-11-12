@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './Buzzer.styl';
-import CreateFogButton from './createFogButton/CreateFogButton';
+import CreateFogButton from './CreateFogButton/CreateFogButton';
 import getInstance from './../login/httpService';
+import UserInfo from './UserInfo/UserInfo';
 
 export default class Buzzer extends Component {
   static async createFog() {
@@ -25,13 +26,9 @@ export default class Buzzer extends Component {
     })
 
   render() {
-    const { counter } = (this.state.user && this.state.user.stats) || {};
-    const username = (this.state.user && this.state.user.username);
     return (
       <div>
-        <div>Eingelogged als: {username}</div>
-        <div>Knopf gedrückt: {counter || 0}x</div>
-
+        <UserInfo user={this.state.user} />
         <CreateFogButton createFog={this.createFogAndUpdateState} />
       </div>
     );

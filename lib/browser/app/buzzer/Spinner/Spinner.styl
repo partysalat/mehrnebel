@@ -1,0 +1,40 @@
+// Kindly taken from https://codepen.io/bernethe/pen/dorozd
+$spCol=#fff
+.sp-vortex {
+  width: 50px;
+  height: 50px;
+  margin 0 auto;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.sp-vortex:after, .sp-vortex:before {
+  content: '';
+  border-radius: 50%;
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  -webkit-animation: spVortex 2s infinite linear;
+  animation: spVortex 2s infinite linear;
+}
+.sp-vortex:before {
+  border-top: 6px $spCol solid;
+  top: -3px;
+  left: calc( -50% - 3px );
+  transform-origin: right center;
+}
+.sp-vortex:after {
+  border-bottom: 6px $spCol solid;
+  top: 3px;
+  right: calc( -50% - 3px );
+  transform-origin: left center;
+}
+@-webkit-keyframes spVortex {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(359deg); }
+}
+@keyframes spVortex {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(359deg); }
+}
+
