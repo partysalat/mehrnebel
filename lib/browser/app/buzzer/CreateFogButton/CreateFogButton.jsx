@@ -38,7 +38,9 @@ class CreateFogButton extends Component {
     return (
       <Hammer
         onPress={this.handleOnPress}
+        onPanStart={this.handleOnPress}
         onPressUp={this.handleOnPressUp}
+        onPanEnd={this.handleOnPressUp}
         onTap={this.handleOnTap}
       >
         <button className={`push--flat ${className}`} />
