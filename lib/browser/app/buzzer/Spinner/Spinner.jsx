@@ -4,6 +4,6 @@ import './Spinner.styl';
 
 export default function () {
   return (
-    <div className="sp sp-vortex" />
+    <div className="sp sp-wave" />
   );
 }
