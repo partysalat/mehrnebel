@@ -21,7 +21,6 @@ Parameters:
   apiGatewayStage:
     Description: Stage of api gateway
     Type: String
-    Default: dev
 
   restApiId:
     Description: Id of the api gateway rest api

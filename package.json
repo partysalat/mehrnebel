@@ -18,7 +18,7 @@
     "watch": "npm run clean:light && (npm run server & gulp watch & npm run unit:watch)",
     "start": "npm run clean && npm run browser:build && npm run server",
     "deploy": "npm run build && (npm run browser:deploy & npm run server:deploy)",
-    "server:deploy": "sls deploy -v",
+    "server:deploy": "sls deploy -v --stage pro",
     "browser:deploy": "gulp deploy:assets",
     "browser:build": "gulp build:client",
     "unit:server": "ava lib/server/**/*.spec.* --source 'lib/server/**/*!(spec).js' --require babel-register",

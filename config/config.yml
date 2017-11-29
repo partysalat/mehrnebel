@@ -1,0 +1,20 @@
+local:
+  USER_POOL_ID: ${cf:login-cognito-userpool.cognitoUserPool}
+  USER_POOL_CLIENT_ID: ${cf:login-cognito-userpool.cognitoUserPoolClient}
+  USER_POOL_LOGIN_URL: ${cf:login-cognito-userpool.userPoolDomain}
+  ASSETS_DOMAIN_NAME:  http://localhost:9211
+  IOT_ENDPOINT: ${cf:thing-smoke-machine.thingEndpoint}
+  DYNAMO_REGION: localhost
+  DYNAMO_ENDPOINT: http://localhost:8000
+  DYNAMO_TABLE_NAME: usersFogTable-${opt:stage, self:provider.stage}
+
+
+
+pro:
+  USER_POOL_ID: ${cf:login-cognito-userpool.cognitoUserPool}
+  USER_POOL_CLIENT_ID: ${cf:login-cognito-userpool.cognitoUserPoolClient}
+  USER_POOL_LOGIN_URL: ${cf:login-cognito-userpool.userPoolDomain}
+  ASSETS_DOMAIN_NAME: https://${cf:mehrnebel-assets.distributionName}
+  IOT_ENDPOINT: ${cf:thing-smoke-machine.thingEndpoint}
+  DYNAMO_REGION: ${opt:region,self:provider.region}
+  DYNAMO_TABLE_NAME: usersFogTable-${opt:stage, self:provider.stage}
