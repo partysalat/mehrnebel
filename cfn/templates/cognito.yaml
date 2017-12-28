@@ -36,7 +36,7 @@ Resources:
       Policies:
         PasswordPolicy:
           MinimumLength: 6
-          RequireUppercase: true
+          RequireUppercase: false
           RequireLowercase: true
           RequireNumbers: false
           RequireSymbols: false
