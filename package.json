@@ -34,7 +34,6 @@
   "author": "Ben Lenser",
   "license": "MIT",
   "dependencies": {
-    "confidence": "^3.0.2",
     "lodash": "^4.16.4",
     "prop-types": "^15.5.10",
     "react-router-dom": "^4.2.2",
