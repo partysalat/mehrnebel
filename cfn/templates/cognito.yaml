@@ -84,8 +84,8 @@ Resources:
           AllowedOAuthFlowsUserPoolClient: true
           CallbackURLs:
             - 'https://mehrnebel.cornetto.cloud/buzzer'
-#          LogoutUrls:
-#            - 'https://dutrinkst.cornetto.cloud'
+          LogoutURLs:
+            - 'https://mehrnebel.cornetto.cloud'
 
 
 # -----------------------------------------------------------------------------------------
