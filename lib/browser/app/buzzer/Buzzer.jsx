@@ -3,6 +3,7 @@ import './Buzzer.styl';
 import CreateFogButton from './CreateFogButton/CreateFogButton';
 import getInstance from './../login/httpService';
 import UserInfo from './UserInfo/UserInfo';
+import LogoutButton from './LogoutButton/LogoutButton';
 
 export default class Buzzer extends Component {
   static async createFog() {
@@ -28,6 +29,7 @@ export default class Buzzer extends Component {
   render() {
     return (
       <div>
+        <LogoutButton />
         <UserInfo user={this.state.user} />
         <CreateFogButton createFog={this.createFogAndUpdateState} />
       </div>
