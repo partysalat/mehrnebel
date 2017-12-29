@@ -23,3 +23,18 @@ stacks:
         iDJlKAcz5v/6m71VfS+NVKvqen7mp1hJ6rFsUM8euULygDTx5xJuxbXPrhLw2Bvh
         NcI9l45uaofkeDzhiUQnXwGUqq8iLPgnVlBNUu4cMbi5hgigtsmn66DZvj3YWA==
         -----END CERTIFICATE REQUEST-----
+  thing-smoke-machine-winnii:
+    template-url: templates/iot-thing.yaml
+    timeout: 1200
+    parameters:
+      thingName: 'smokemachine-2'
+      customResourceServiceToken: '|Ref|customResource.ServiceToken'
+      csrRequest: >
+        -----BEGIN CERTIFICATE REQUEST-----
+        MIHgMIGHAgEAMCUxFjAUBgNVBAMMDWF3c19pb3RfdGhpbmcxCzAJBgNVBAYTAkRF
+        MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3uWZatYbO+edQXq5PECryDvoQV5
+        1iM2+1yx96vY2OcxRII30fS82nHZTjSbKDd5zLeAyrt++0+uYvO2SFvW0qAAMAoG
+        CCqGSM49BAMCA0gAMEUCID8GPrXrCU5s9TyKRDGsWScc6f8rGO71x3rDbisZX5HV
+        AiEA5eac3oCpOHqRfZ/AFzvA837d7foNlCYy0u3r6GcHWCA=
+        -----END CERTIFICATE REQUEST-----
+
