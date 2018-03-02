@@ -9,12 +9,10 @@
     "url": "https://github.com/partysalat/cornetto-cloud-login"
   },
   "scripts": {
-    "postinstall": "sls dynamodb install",
     "clean": "rm -rf target",
     "clean:light": "rm -rf target/assets",
     "test": "npm run unit",
-    "server": "gulp serve & npm run dynamodb:start & sls offline start",
-    "dynamodb:start": "sls dynamodb start --migrate",
+    "server": "gulp serve & sls offline start",
     "watch": "npm run clean:light && (npm run server & gulp watch & npm run unit:watch)",
     "start": "npm run clean && npm run browser:build && npm run server",
     "deploy": "npm run build && (npm run browser:deploy & npm run server:deploy)",
@@ -86,6 +84,9 @@
     "react-bootstrap": "^0.31.3",
     "react-dom": "^15.3.2",
     "react-hammerjs": "^1.0.1",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.16.0",
     "require-dir": "^0.3.1",
     "serverless": "^1.22.0",
     "serverless-dynamodb-local": "^0.2.26",
