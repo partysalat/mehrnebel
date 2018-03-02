@@ -22,9 +22,9 @@ class CreateFogButton extends Component {
   }
   handleOnPress = async () => {
     this.reset();
-    await this.props.createFog();
+    this.props.createFog();
     this.setState((currentState) => {
-      const timeout = setTimeout(() => { this.handleOnPress(); }, 1000);
+      const timeout = setTimeout(() => { this.handleOnPress(); }, 50);
       return { ...currentState, timeout, pressed: true };
     });
   }
