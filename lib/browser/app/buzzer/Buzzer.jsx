@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './Buzzer.styl';
 import { connect } from 'react-redux';
+import './Buzzer.styl';
 import CreateFogButton from './CreateFogButton/CreateFogButton';
 import UserInfo from './UserInfo/UserInfo';
 import LogoutButton from './LogoutButton/LogoutButton';

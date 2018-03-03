@@ -1,20 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Routes from './router';
 import './App.styl';
-class App extends Component {
-  constructor(props) {
-    super(props);
 
-  }
-
-  render() {
-    return (
-      <div className="App container">
-        <Routes />
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div className="App container">
+      <Routes />
+    </div>
+  );
 }
 
 export default withRouter(App);
