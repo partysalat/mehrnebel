@@ -5,36 +5,18 @@ import './CreateFogButton.styl';
 
 
 class CreateFogButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pressed: false,
-      timeout: null,
-    };
-  }
-  reset() {
-    clearTimeout(this.state.timeout);
-    this.setState(currentState => ({ ...currentState, pressed: false, timeout: null }));
-  }
-
   handleOnPressUp= () => {
-    this.reset();
+    this.props.createFogEnd();
   }
   handleOnPress = async () => {
-    this.reset();
     this.props.createFog();
-    this.setState((currentState) => {
-      const timeout = setTimeout(() => { this.handleOnPress(); }, 50);
-      return { ...currentState, timeout, pressed: true };
-    });
   }
   handleOnTap= () => {
-    this.props.createFog();
-    this.reset();
+    this.props.createFogSimple();
   }
 
   render() {
-    const className = this.state.pressed ? 'is-pushed' : '';
+    // const className = this.state.pressed ? 'is-pushed' : '';
     return (
       <Hammer
         onPress={this.handleOnPress}
@@ -42,7 +24,7 @@ class CreateFogButton extends Component {
         onPanEnd={this.handleOnPressUp}
         onTap={this.handleOnTap}
       >
-        <button className={`push--flat ${className}`} />
+        <button className="push--flat" />
       </Hammer>
     );
   }
@@ -50,5 +32,7 @@ class CreateFogButton extends Component {
 
 CreateFogButton.propTypes = {
   createFog: PropTypes.func.isRequired,
+  createFogEnd: PropTypes.func.isRequired,
+  createFogSimple: PropTypes.func.isRequired,
 };
 export default CreateFogButton;

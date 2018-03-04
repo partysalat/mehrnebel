@@ -4,7 +4,7 @@ import './Buzzer.styl';
 import CreateFogButton from './CreateFogButton/CreateFogButton';
 import UserInfo from './UserInfo/UserInfo';
 import LogoutButton from './LogoutButton/LogoutButton';
-import { createFog, loadUser } from '../../redux/actions';
+import {createFog, createFogButtonReleased, createFogSimple, loadUser} from '../../redux/actions';
 
 
 class Buzzer extends Component {
@@ -17,7 +17,11 @@ class Buzzer extends Component {
       <div>
         <LogoutButton />
         <UserInfo user={this.props.user} />
-        <CreateFogButton createFog={this.props.createFog} />
+        <CreateFogButton
+          createFog={this.props.createFog}
+          createFogSimple={this.props.createFogSimple}
+          createFogEnd={this.props.createFogEnd}
+        />
       </div>
     );
   }
@@ -34,6 +38,8 @@ function mapDispatchToProps(dispatch) {
   return {
     loadUser: () => dispatch(loadUser()),
     createFog: () => dispatch(createFog()),
+    createFogSimple: () => dispatch(createFogSimple()),
+    createFogEnd: () => dispatch(createFogButtonReleased()),
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Buzzer);
