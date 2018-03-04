@@ -25,7 +25,7 @@ provider:
 
 plugins:
   - serverless-webpack
-  - serverless-dynamodb-local
+#  - serverless-dynamodb-local
   - serverless-offline
 
 
