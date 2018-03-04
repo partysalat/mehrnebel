@@ -4,7 +4,7 @@ import './Buzzer.styl';
 import CreateFogButton from './CreateFogButton/CreateFogButton';
 import UserInfo from './UserInfo/UserInfo';
 import LogoutButton from './LogoutButton/LogoutButton';
-import {createFog, createFogButtonReleased, createFogSimple, loadUser} from '../../redux/actions';
+import { createFog, createFogButtonReleased, createFogSimple, loadUser } from '../../redux/actions';
 
 
 class Buzzer extends Component {
