@@ -3,26 +3,14 @@ import PropTypes from 'prop-types';
 import Hammer from 'react-hammerjs';
 import './CreateFogButton.styl';
 
-
 class CreateFogButton extends Component {
-  handleOnPressUp= () => {
-    this.props.createFogEnd();
-  }
-  handleOnPress = async () => {
-    this.props.createFog();
-  }
-  handleOnTap= () => {
-    this.props.createFogSimple();
-  }
-
   render() {
-    // const className = this.state.pressed ? 'is-pushed' : '';
     return (
       <Hammer
-        onPress={this.handleOnPress}
-        onPressUp={this.handleOnPressUp}
-        onPanEnd={this.handleOnPressUp}
-        onTap={this.handleOnTap}
+        onPress={this.props.createFog}
+        onPressUp={this.props.createFogEnd}
+        onPanEnd={this.props.createFogEnd}
+        onTap={this.props.createFogSimple}
       >
         <button className="push--flat" />
       </Hammer>
