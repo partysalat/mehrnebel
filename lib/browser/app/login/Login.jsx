@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import './Login.styl';
-import { login } from './authService';
 
 
 export default class Login extends Component {
@@ -11,10 +10,7 @@ export default class Login extends Component {
   }
 
   handleLogin = () => {
-    login()
-      .then(() => {
-        this.props.history.push('/buzzer');
-      });
+    this.props.history.push('/buzzer');
   }
 
   render() {
