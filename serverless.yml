@@ -7,7 +7,7 @@ provider:
   memorySize: 256
   stage: local
   region: eu-central-1
-  profile: default
+#  profile: default
   iamRoleStatements:
     - Effect: Allow
       Action:
