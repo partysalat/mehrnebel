@@ -1,4 +1,4 @@
-# Mehrnebel!
+# Mehrnebel
 How often did it happen to you that you have a fog machine and just everybody wants to press the button.
 Because there is an app for almost everything today, mehrnebel! is the one for that.  
 
