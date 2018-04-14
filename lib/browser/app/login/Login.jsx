@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import './Login.styl';
+import { login } from './authService';
 
 
 export default class Login extends Component {
   handleLogin = () => {
-    this.props.history.push('/buzzer');
+    login()
+      .then(() => {
+        this.props.history.push('/buzzer');
+      });
   }
 
   render() {
