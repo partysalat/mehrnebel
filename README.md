@@ -1,4 +1,5 @@
 # Mehrnebel!
+[![CircleCI](https://circleci.com/gh/partysalat/mehrnebel/tree/master.svg?style=svg)](https://circleci.com/gh/partysalat/mehrnebel/tree/master)
 How often did it happen to you that you have a fog machine and just everybody wants to press the button.
 Because there is an app for almost everything today, mehrnebel! is the one for that.  
 
