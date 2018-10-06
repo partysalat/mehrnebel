@@ -7,3 +7,13 @@ stacks:
     parameters:
       dnsPrefix: 'mehrnebel'
       dnsBaseName: 'cornetto.cloud'
+      dnsValidationMethod: DNS
+
+  mehrnebel-api-certificate-stack:
+    template-url: templates/certificate.yaml
+    timeout: 1200
+    parameters:
+      dnsPrefix: 'api.mehrnebel'
+      dnsBaseName: 'cornetto.cloud'
+      dnsValidationMethod: DNS
+

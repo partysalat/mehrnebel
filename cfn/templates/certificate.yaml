@@ -11,6 +11,11 @@ Parameters:
     AllowedPattern: ".*"
     Type: String
 
+  dnsValidationMethod:
+    Description: Dns Validation Method
+    Type: String
+    Default: EMAIL
+
 
 # -----------------------------------------------------------------------------------------
 Resources:
@@ -25,7 +30,8 @@ Resources:
       DomainName: !Sub ${dnsPrefix}.${dnsBaseName}
       DomainValidationOptions:
       - DomainName: !Sub ${dnsPrefix}.${dnsBaseName}
-        ValidationDomain: '|Ref|dnsBaseName'
+        ValidationDomain: !Ref dnsBaseName
+      ValidationMethod: !Ref dnsValidationMethod
 
 # -----------------------------------------------------------------------------------------
 # OUTPUTS

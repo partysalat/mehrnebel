@@ -11,5 +11,5 @@ stacks:
       dnsBaseName: 'cornetto.cloud'
       restApiId: '|Ref|mehrnebel-pro.ApiGatewayRestApiId'
       # cannot reference because of other region (needs to be us-east-1)
-      certificateArn: 'arn:aws:acm:us-east-1:111580521549:certificate/954ce9ed-a11f-4e5a-8461-592fb2a9ce1b'
+      certificateArn: 'arn:aws:acm:us-east-1:111580521549:certificate/2378514a-d621-44e1-8cdb-25c346483020'
 
