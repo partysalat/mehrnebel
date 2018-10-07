@@ -1,0 +1,106 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: DNS/Route53 config for cornetto.cloud
+Parameters:
+  dnsPrefix:
+    Description: DNS Domain prefix, e.g. 'mehrnebel'
+    Type: String
+
+  dnsBaseName:
+    Description: DNS Domain , f.e. 'cornetto.cloud.'
+    ConstraintDescription: "Value must be a dns name and end with a dot"
+    AllowedPattern: ".*"
+    Type: String
+
+  apiDomain:
+    Description: Url for rest api
+    Type: String
+
+  homepageS3Bucket:
+    Description: s3 bucket for the homepage
+    Type: String
+
+  certificateArn:
+    Description: Certifcate ARN
+    Type: String
+
+
+
+# -----------------------------------------------------------------------------------------
+Resources:
+  # -----------------------------------------------------------------------------------------
+
+  # -----------------------------------------------------------------------------------------
+  # DNS Route53
+  # -----------------------------------------------------------------------------------------
+  CloudfrontDistribution:
+    Type: "AWS::CloudFront::Distribution"
+    Properties:
+      DistributionConfig:
+        HttpVersion: http2
+        Aliases:
+        - !Sub ${dnsPrefix}.${dnsBaseName}
+        ViewerCertificate:
+          AcmCertificateArn: !Ref certificateArn
+          SslSupportMethod: sni-only
+        CacheBehaviors:
+        # Homepage
+        - AllowedMethods:
+          - GET
+          - HEAD
+          DefaultTTL: 0
+          MaxTTL: 0
+          MinTTL: 0
+          PathPattern: /
+          TargetOriginId: mehrnebel-login
+          ViewerProtocolPolicy: redirect-to-https
+        - AllowedMethods:
+          - GET
+          - HEAD
+          DefaultTTL: 0
+          MaxTTL: 0
+          MinTTL: 0
+          PathPattern: /buzzer
+          TargetOriginId: mehrnebel-login
+          ViewerProtocolPolicy: redirect-to-https
+
+        # REST API
+        - AllowedMethods:
+          - GET
+          - HEAD
+          DefaultTTL: 0
+          MaxTTL: 0
+          MinTTL: 0
+          PathPattern: /api/*
+          TargetOriginId: mehrnebel-api
+          ViewerProtocolPolicy: redirect-to-https
+
+        Origins:
+        - CustomOriginConfig:
+            OriginProtocolPolicy: https-only
+            OriginSSLProtocols:
+            - TLSv1.2
+            DomainName: !Sub ${homepageS3Bucket}.s3-website.${AWS::Region}.amazonaws.com
+            Id: mehrnebel-homepage
+#            CustomOriginConfig:
+#              HTTPPort: '80'
+#              HTTPSPort: '443'
+#              OriginProtocolPolicy: 'http-only'
+
+        - CustomOriginConfig:
+            OriginProtocolPolicy: https-only
+            OriginSSLProtocols:
+            - TLSv1.2
+            DomainName: !Ref apiDomain
+            Id: mehrnebel-api
+
+# -----------------------------------------------------------------------------------------
+# OUTPUTS
+# -----------------------------------------------------------------------------------------
+Outputs:
+  #  dnsRecord:
+  #    Value: '|Ref|dnsRecord'
+  #    Description: DB dns name
+  certificate:
+    Value: '|Ref|Certificate'
+    Description: certificate ARN
+
