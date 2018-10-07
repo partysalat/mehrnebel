@@ -11,7 +11,7 @@ gulp.task('_aws:deploy', () => {
   const publisher = awspublish.create({
     region: cfnConfig.region,
     params: {
-      Bucket: cfnConfig.stacks['mehrnebel-assets'].parameters.bucketName,
+      Bucket: cfnConfig.stacks['mehrnebel-assets'].parameters.assetsBucketName,
       ACL: 'public-read',
     },
   }, {

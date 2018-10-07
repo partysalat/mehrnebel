@@ -1,9 +1,13 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: Assets (S3 and Cloudfront) for mehrnebel
 Parameters:
-  bucketName:
+  assetsBucketName:
     Description: Assets bucket name
     Type: String
+  pageBucketName:
+    Description: page bucket name
+    Type: String
+
   originId:
     Description: an origin id for cloudfront
     Type: String
@@ -16,11 +20,11 @@ Parameters:
 # -----------------------------------------------------------------------------------------
 Resources:
 # -----------------------------------------------------------------------------------------
-
+  # Assets
   S3AssetsBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Ref bucketName
+      BucketName: !Ref assetsBucketName
 
 
   CloudfrontDistribution:
@@ -34,8 +38,6 @@ Resources:
             Id: !Ref originId
             OriginPath: !Ref originPath
             S3OriginConfig: {}
-
-#              DomainName: !GetAtt S3AssetsBucket.DomainName
         PriceClass: PriceClass_100
         DefaultCacheBehavior:
           AllowedMethods:
@@ -47,6 +49,30 @@ Resources:
           TargetOriginId: !Ref originId
           ViewerProtocolPolicy: 'https-only'
 
+  # Html Page
+  S3PageBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Ref pageBucketName
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+    DeletionPolicy: Retain
+
+  BucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      PolicyDocument:
+        Id: AllowPublicAccessToBucketPolicy
+        Version: '2012-10-17'
+        Statement:
+        - Sid: PublicReadForGetBucketObjects
+          Effect: Allow
+          Principal: '*'
+          Action: 's3:GetObject'
+          Resource: !Sub arn:aws:s3:::${S3PageBucket}/*
+      Bucket: !Ref S3PageBucket
 
 
 
@@ -55,10 +81,13 @@ Resources:
 # OUTPUTS
 # -----------------------------------------------------------------------------------------
 Outputs:
-  bucketName:
-    Value: '|Ref|S3AssetsBucket'
+  assetsBucketName:
+    Value: !Ref S3AssetsBucket
     Description: assets s3 bucket resource name
   distributionName:
     Value: !GetAtt CloudfrontDistribution.DomainName
     Description: domain name of cloudfront distribution
+  pageBucketName:
+    Value: !Ref S3PageBucket
+    Description: assets s3 bucket resource name
 

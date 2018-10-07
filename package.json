@@ -90,6 +90,7 @@
     "serverless": "^1.22.0",
     "serverless-dynamodb-local": "^0.2.26",
     "serverless-offline": "3.16.0",
+    "serverless-s3-sync": "^1.7.0",
     "serverless-webpack": "3.1.1",
     "sinon": "^1.17.6",
     "style-loader": "^0.13.1",

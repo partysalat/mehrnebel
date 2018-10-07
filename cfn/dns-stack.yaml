@@ -7,9 +7,20 @@ stacks:
     parameters:
       apiGatewayEndpoint: '|Ref|mehrnebel-pro.ServiceEndpoint'
       apiGatewayStage: 'pro'
-      dnsPrefix: 'mehrnebel'
+      dnsPrefix: 'api.mehrnebel'
       dnsBaseName: 'cornetto.cloud'
       restApiId: '|Ref|mehrnebel-pro.ApiGatewayRestApiId'
+      # cannot reference because of other region (needs to be us-east-1)
+      certificateArn: '	arn:aws:acm:us-east-1:111580521549:certificate/d0997578-7945-42f4-95ce-332a7e9d08a4'
+
+  mehrnebel-cloudfront-stack:
+    template-url: templates/cloudfront-lb.yaml
+    timeout: 1200
+    parameters:
+      dnsPrefix: 'mehrnebel'
+      dnsBaseName: 'cornetto.cloud'
+      apiDomain: '|Ref|mehrnebel-dns-stack.domainName'
+      homepageS3Bucket: '|Ref|mehrnebel-assets.pageBucketName'
       # cannot reference because of other region (needs to be us-east-1)
       certificateArn: 'arn:aws:acm:us-east-1:111580521549:certificate/2378514a-d621-44e1-8cdb-25c346483020'
 
