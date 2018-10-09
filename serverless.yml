@@ -30,7 +30,7 @@ plugins:
 
 
 custom:
-  webpack: ./webpack.server.config.js
+  webpack: ./webpack/webpack.server.config.js
   webpackIncludeModules: true
   dynamodb:
     start:
@@ -42,21 +42,6 @@ custom:
       presets: ["es2015", "stage-2"]
 
 functions:
-  index:
-    handler: lib/server/handlers/indexHandler.login
-    events:
-      - http:
-          method: GET
-          path: /
-          integration: lambda
-          request: ${file(./serverless.templates.yml):request-html}
-          response: ${file(./serverless.templates.yml):response-html}
-      - http:
-          method: GET
-          path: /buzzer
-          integration: lambda
-          request: ${file(./serverless.templates.yml):request-html}
-          response: ${file(./serverless.templates.yml):response-html}
   createFog:
     handler: lib/server/handlers/pushHandler.createFog
     events:

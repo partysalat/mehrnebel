@@ -8,8 +8,8 @@ const
   gulpWebpack = require('webpack-stream');
 
 const
-  webpackDevConfig = require('./../webpack.browser.dev.config'),
-  webpackProdConfig = require('./../webpack.browser.prod.config.js');
+  webpackDevConfig = require('./../webpack/webpack.browser.dev.config'),
+  webpackProdConfig = require('./../webpack/webpack.browser.prod.config.js');
 
 gulp.task('_scripts:watch', () => {
   const webpackConfig = _.assign({}, webpackDevConfig, {
