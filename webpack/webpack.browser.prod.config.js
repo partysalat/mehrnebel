@@ -1,24 +1,17 @@
-const
-  webpackDevConfig = require('./webpack.browser.dev.config'),
-  _ = require('lodash'),
-  webpack = require('webpack');
+const webpack = require('webpack');
+const _ = require('lodash');
 
-const webpackConfig = _.cloneDeep(webpackDevConfig);
-delete webpackConfig.devtool;
+const webpackConfig = _.cloneDeep(require('./webpack.browser.base.config'));
+
 webpackConfig.plugins = webpackConfig.plugins.concat(
   new webpack.DefinePlugin({
     'process.env': {
-      // This has effect on the react lib size
       NODE_ENV: JSON.stringify('production'),
     },
   }),
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      unused: true,
-      dead_code: true,
-      warnings: false,
-      drop_debugger: true,
-    },
-  })
+  new webpack.LoaderOptionsPlugin({
+    minimize: true,
+  }),
 );
+webpackConfig.mode = 'production';
 module.exports = webpackConfig;
