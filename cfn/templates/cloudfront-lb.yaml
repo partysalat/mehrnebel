@@ -55,8 +55,21 @@ Resources:
           ForwardedValues:
             QueryString: false
 
-        # REST API
+
         CacheBehaviors:
+        # Assets
+        - AllowedMethods:
+          - GET
+          - HEAD
+          DefaultTTL: 31536000
+          MaxTTL: 31536000
+          MinTTL: 31536000
+          PathPattern: /assets/*
+          TargetOriginId: mehrnebel-homepage
+          ViewerProtocolPolicy: redirect-to-https
+          ForwardedValues:
+            QueryString: false
+        # REST API
         - AllowedMethods:
           - DELETE
           - GET
@@ -76,7 +89,11 @@ Resources:
             Headers:
               - 'authorization'
             QueryString: true
-
+        CustomErrorResponses:
+        - ErrorCode: '404'
+          ErrorCachingMinTTL: 0
+          ResponsePagePath: /
+          ResponseCode: 200
         Origins:
           - CustomOriginConfig:
 #              OriginProtocolPolicy: https-only
@@ -89,8 +106,7 @@ Resources:
             DomainName: !Sub ${homepageS3Bucket}.s3-website.${AWS::Region}.amazonaws.com
             Id: mehrnebel-homepage
 
-          -
-            CustomOriginConfig:
+          - CustomOriginConfig:
               OriginProtocolPolicy: https-only
               OriginSSLProtocols:
               - TLSv1.2
