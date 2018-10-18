@@ -1,9 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: Assets (S3 and Cloudfront) for mehrnebel
 Parameters:
-  assetsBucketName:
-    Description: Assets bucket name
-    Type: String
   pageBucketName:
     Description: page bucket name
     Type: String
@@ -20,35 +17,6 @@ Parameters:
 # -----------------------------------------------------------------------------------------
 Resources:
 # -----------------------------------------------------------------------------------------
-  # Assets
-  S3AssetsBucket:
-    Type: AWS::S3::Bucket
-    Properties:
-      BucketName: !Ref assetsBucketName
-
-
-  CloudfrontDistribution:
-    Type : AWS::CloudFront::Distribution
-    Properties:
-      DistributionConfig:
-        Enabled: true
-        HttpVersion: http2
-        Origins:
-          - DomainName: !GetAtt S3AssetsBucket.DomainName
-            Id: !Ref originId
-            OriginPath: !Ref originPath
-            S3OriginConfig: {}
-        PriceClass: PriceClass_100
-        DefaultCacheBehavior:
-          AllowedMethods:
-            - GET
-            - HEAD
-          Compress: true
-          ForwardedValues:
-            QueryString: false
-          TargetOriginId: !Ref originId
-          ViewerProtocolPolicy: 'https-only'
-
   # Html Page
   S3PageBucket:
     Type: 'AWS::S3::Bucket'
@@ -81,12 +49,6 @@ Resources:
 # OUTPUTS
 # -----------------------------------------------------------------------------------------
 Outputs:
-  assetsBucketName:
-    Value: !Ref S3AssetsBucket
-    Description: assets s3 bucket resource name
-  distributionName:
-    Value: !GetAtt CloudfrontDistribution.DomainName
-    Description: domain name of cloudfront distribution
   pageBucketName:
     Value: !Ref S3PageBucket
     Description: assets s3 bucket resource name

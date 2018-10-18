@@ -33,8 +33,6 @@
   "author": "Ben Lenser",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.16.4",
-    "prop-types": "^15.5.10",
     "react-router-dom": "^4.2.2",
     "aws-sdk": "^2.142.0"
   },
@@ -81,7 +79,7 @@
     "redux": "^3.7.2",
     "redux-saga": "^0.16.0",
     "require-dir": "^0.3.1",
-    "serverless": "^1.22.0",
+    "serverless": "^1.32.0",
     "serverless-dynamodb-local": "^0.2.26",
     "serverless-offline": "3.16.0",
     "serverless-s3-sync": "^1.7.0",

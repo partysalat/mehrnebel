@@ -5,7 +5,6 @@ stacks:
     template-url: templates/assets.yaml
     timeout: 1200
     parameters:
-      assetsBucketName: 'mehrnebel-assets'
       pageBucketName: 'mehrnebel.cornetto.cloud'
       # random identifier
       originId: 's3-mehrnebel-assets'
