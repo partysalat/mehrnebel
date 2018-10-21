@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS IOT Things
+
+# -----------------------------------------------------------------------------------------
+Resources:
+# -----------------------------------------------------------------------------------------
+  IotBrowserRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            AWS: !Sub arn:aws:iam::${AWS::AccountId}:root
+          Action:
+          - sts:AssumeRole
+      Policies:
+      - PolicyName: IOTConnect
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Action:
+            - iot:Connect
+            - iot:Subscribe
+            - iot:Publish
+            - iot:Receive
+            Resource: "*"
+            Effect: Allow
+
+
+
+
+# -----------------------------------------------------------------------------------------
+# OUTPUTS
+# -----------------------------------------------------------------------------------------
+Outputs:
+  roleArn:
+    Value: !GetAtt IotBrowserRole.Arn
+    Description: Name of a thing
+

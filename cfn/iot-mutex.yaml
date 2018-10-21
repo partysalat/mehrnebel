@@ -1,0 +1,6 @@
+region: eu-central-1
+
+stacks:
+  mehrnebel-iot-mutex:
+    template-url: templates/iot-mutex.yaml
+    timeout: 1200

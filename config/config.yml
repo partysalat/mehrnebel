@@ -7,6 +7,7 @@ local:
   DYNAMO_REGION: localhost
   DYNAMO_ENDPOINT: http://localhost:8000
   DYNAMO_TABLE_NAME: usersFogTable-${opt:stage, self:provider.stage}
+  MUTEX_IAM_ROLE: ${cf:mehrnebel-iot-mutex.roleArn}
 
 
 
@@ -18,3 +19,4 @@ pro:
   IOT_ENABLED: true
   DYNAMO_REGION: ${opt:region,self:provider.region}
   DYNAMO_TABLE_NAME: usersFogTable-${opt:stage, self:provider.stage}
+  MUTEX_IAM_ROLE: ${cf:mehrnebel-iot-mutex.roleArn}

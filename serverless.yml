@@ -19,6 +19,15 @@ provider:
       Action:
         - iot:Publish
       Resource: arn:aws:iot:*:*:topic/mehrnebel
+    - Effect: "Allow"
+      Action:
+      - iot:DescribeEndpoint
+      Resource: "*"
+    - Effect: "Allow"
+      Action:
+      - 'sts:AssumeRole'
+      Resource: ${cf:mehrnebel-iot-mutex.roleArn}
+
   environment: ${file(./config/config.yml):${opt:stage, self:provider.stage}}
 
 
@@ -28,6 +37,7 @@ plugins:
 #  - serverless-dynamodb-local
   - serverless-offline
   - serverless-s3-sync
+  - serverless-pseudo-parameters
 #package:
 #  individually: true
 
@@ -62,6 +72,19 @@ functions:
       - http:
           method: PUT
           path: /api/create-fog
+          integration: lambda
+          authorizer:
+            arn: ${cf:login-cognito-userpool.cognitoArnPool}
+            claims:
+              - email
+              - name
+              - cognito:username
+  getIotCredentials:
+    handler: lib/server/handlers/iotCredentialsHandler.getCredentials
+    events:
+      - http:
+          method: GET
+          path: /api/iot-credentials
           integration: lambda
           authorizer:
             arn: ${cf:login-cognito-userpool.cognitoArnPool}
@@ -105,6 +128,7 @@ resources:
          ProvisionedThroughput:
            ReadCapacityUnits: 1
            WriteCapacityUnits: 1
+
 
    Outputs:
       UsersStatsTableName:

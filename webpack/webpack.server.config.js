@@ -5,6 +5,7 @@ module.exports = {
   mode: 'production',
   entry: {
     pushHandler: './lib/server/handlers/pushHandler.js',
+    iotCredentialsHandler: './lib/server/handlers/iotCredentialsHandler.js',
   },
   output: {
     libraryTarget: 'commonjs',
