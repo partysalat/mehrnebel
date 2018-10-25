@@ -13,6 +13,8 @@ const webpackConfig = Object.assign({}, webpackBaseConfig, {
       '/api': 'http://localhost:2999',
     },
     publicPath: '/',
+    hot: false,
+    inline: false,
     historyApiFallback: true,
     contentBase: path.join(__dirname, '../target/assets'),
     port: 9000,

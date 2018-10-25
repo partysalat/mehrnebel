@@ -1,5 +1,9 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: AWS IOT Things
+Parameters:
+  topicName:
+    Description: Name of the topic
+    Type: String
 
 # -----------------------------------------------------------------------------------------
 Resources:
@@ -21,10 +25,16 @@ Resources:
           Version: '2012-10-17'
           Statement:
           - Action:
-            - iot:Connect
             - iot:Subscribe
             - iot:Publish
             - iot:Receive
+#            Resource: !Sub arn:aws:iot:${AWS::Region}:${AWS::AccountId}:topic/${topicName}
+            Resource:
+              - !Sub arn:aws:iot:${AWS::Region}:${AWS::AccountId}:topic/${topicName}
+              - !Sub arn:aws:iot:${AWS::Region}:${AWS::AccountId}:topicfilter/${topicName}
+            Effect: Allow
+          - Action:
+            - iot:Connect
             Resource: "*"
             Effect: Allow
 

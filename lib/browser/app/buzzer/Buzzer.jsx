@@ -4,12 +4,14 @@ import './Buzzer.styl';
 import CreateFogButton from './CreateFogButton/CreateFogButton';
 import UserInfo from './UserInfo/UserInfo';
 import LogoutButton from './LogoutButton/LogoutButton';
-import { createFog, createFogButtonReleased, createFogSimple, loadUser } from '../../redux/actions';
+import { createFog, createFogButtonReleased, createFogSimple, loadUser, initMutex } from '../../redux/actions';
+import ClaimMutexButton from "./ClaimMutexButton/ClaimMutexButton";
 
 
 class Buzzer extends Component {
   componentWillMount() {
     this.props.loadUser();
+    this.props.initMutex();
   }
 
   render() {
@@ -34,12 +36,12 @@ function mapStateToProps(state) {
     user: state.user,
   };
 }
-function mapDispatchToProps(dispatch) {
-  return {
-    loadUser: () => dispatch(loadUser()),
-    createFog: () => dispatch(createFog()),
-    createFogSimple: () => dispatch(createFogSimple()),
-    createFogEnd: () => dispatch(createFogButtonReleased()),
-  };
-}
+const mapDispatchToProps = {
+  loadUser,
+  createFog,
+  createFogSimple,
+  createFogEnd: createFogButtonReleased,
+  initMutex,
+
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Buzzer);
