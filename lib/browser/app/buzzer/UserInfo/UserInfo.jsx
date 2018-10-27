@@ -5,7 +5,7 @@ import './UserInfo.styl';
 export default function (props) {
   const { counter } = (props.user && props.user.stats) || {};
   const username = (props.user && props.user.username);
-  const { lastClaimer } = { props };
+  const { lastClaimer } = props;
   let userInfo;
   if (counter > -1) {
     userInfo = (
