@@ -11,7 +11,7 @@ function CreateFogButton(props) {
       onPanEnd={props.createFogEnd}
       onTap={props.createFogSimple}
     >
-      <button className="push--flat" />
+      <button className={['push--flat', !props.enabled && 'disabled'].join(' ')} />
     </Hammer>
   );
 }

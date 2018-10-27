@@ -6,7 +6,7 @@ const jeet = require('jeet');
 
 const webpackConfig = Object.assign({}, webpackBaseConfig, {
   mode: 'development',
-  // devtool: 'inline-source-map',
+  devtool: 'inline-source-map',
   devServer: {
     proxy: {
       // simulating cloudfront reverse proxy
@@ -17,6 +17,8 @@ const webpackConfig = Object.assign({}, webpackBaseConfig, {
     inline: false,
     historyApiFallback: true,
     contentBase: path.join(__dirname, '../target/assets'),
+    host: '0.0.0.0',
+    disableHostCheck: true,
     port: 9000,
   },
 

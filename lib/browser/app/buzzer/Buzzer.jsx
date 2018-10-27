@@ -4,8 +4,16 @@ import './Buzzer.styl';
 import CreateFogButton from './CreateFogButton/CreateFogButton';
 import UserInfo from './UserInfo/UserInfo';
 import LogoutButton from './LogoutButton/LogoutButton';
-import { createFog, createFogButtonReleased, createFogSimple, loadUser, initMutex } from '../../redux/actions';
-import ClaimMutexButton from "./ClaimMutexButton/ClaimMutexButton";
+import {
+  createFog,
+  createFogButtonReleased,
+  createFogSimple,
+  loadUser,
+  initMutex,
+  claimMutexToken,
+} from '../../redux/actions';
+
+import ClaimMutexButton from './ClaimMutexButton/ClaimMutexButton';
 
 
 class Buzzer extends Component {
@@ -19,7 +27,9 @@ class Buzzer extends Component {
       <div>
         <LogoutButton />
         <UserInfo user={this.props.user} />
+        <ClaimMutexButton onClick={this.props.claimMutexToken} isChecked={this.props.isClaimed} />
         <CreateFogButton
+          enabled={this.props.isClaimed}
           createFog={this.props.createFog}
           createFogSimple={this.props.createFogSimple}
           createFogEnd={this.props.createFogEnd}
@@ -33,6 +43,7 @@ class Buzzer extends Component {
 function mapStateToProps(state) {
   return {
     isLoading: state.state.isLoadingUserInformation,
+    isClaimed: state.state.isClaimed,
     user: state.user,
   };
 }
@@ -42,6 +53,8 @@ const mapDispatchToProps = {
   createFogSimple,
   createFogEnd: createFogButtonReleased,
   initMutex,
+  claimMutexToken,
+
 
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Buzzer);
