@@ -67,6 +67,7 @@ Resources:
           PathPattern: /assets/*
           TargetOriginId: mehrnebel-homepage
           ViewerProtocolPolicy: redirect-to-https
+          Compress: true
           ForwardedValues:
             QueryString: false
         # REST API
