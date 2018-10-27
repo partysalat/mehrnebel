@@ -10,9 +10,9 @@ export default function (props) {
   if (counter > -1) {
     userInfo = (
       <div className="user-info">
-        <div>Eingelogged als: {username}</div>
-        <div>Knopf gedrückt: {counter || 0}x</div>
-        <div>Als letztes aktiv : {lastClaimer}</div>
+        <div className="user-info-row">Eingelogged als: {username}</div>
+        <div className="user-info-row">Knopf gedrückt: {counter || 0}x</div>
+        <div className="user-info-row">Als letztes aktiv: {lastClaimer}</div>
       </div>
     );
   } else {
