@@ -26,7 +26,7 @@ class Buzzer extends Component {
     return (
       <div>
         <LogoutButton />
-        <UserInfo user={this.props.user} />
+        <UserInfo user={this.props.user} lastClaimer={this.props.lastClaimer} />
         <ClaimMutexButton onClick={this.props.claimMutexToken} isChecked={this.props.isClaimed} />
         <CreateFogButton
           enabled={this.props.isClaimed}
@@ -45,6 +45,7 @@ function mapStateToProps(state) {
     isLoading: state.state.isLoadingUserInformation,
     isClaimed: state.state.isClaimed,
     user: state.user,
+    lastClaimer: state.lastClaimer,
   };
 }
 const mapDispatchToProps = {
