@@ -39,4 +39,18 @@ module.exports = {
     fs: 'empty',
     tls: 'empty',
   },
+  devServer: {
+    proxy: {
+      // simulating cloudfront reverse proxy
+      '/api': 'http://localhost:2999',
+    },
+    publicPath: '/',
+    hot: false,
+    inline: false,
+    historyApiFallback: true,
+    contentBase: path.join(__dirname, '../target/assets'),
+    host: '0.0.0.0',
+    disableHostCheck: true,
+    port: 9000,
+  },
 };
