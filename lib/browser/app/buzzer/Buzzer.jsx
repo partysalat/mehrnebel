@@ -11,6 +11,7 @@ import {
   loadUser,
   initMutex,
   claimMutexToken,
+  looseMutexToken,
 } from '../../redux/actions';
 
 import ClaimMutexButton from './ClaimMutexButton/ClaimMutexButton';
@@ -27,7 +28,10 @@ class Buzzer extends Component {
       <div>
         <LogoutButton />
         <UserInfo user={this.props.user} lastClaimer={this.props.lastClaimer} />
-        <ClaimMutexButton onClick={this.props.claimMutexToken} isChecked={this.props.isClaimed} />
+        <ClaimMutexButton
+          onClick={this.props.isClaimed ? this.props.looseMutexToken : this.props.claimMutexToken}
+          isChecked={this.props.isClaimed}
+        />
         <CreateFogButton
           enabled={this.props.isClaimed}
           createFog={this.props.createFog}
@@ -55,6 +59,7 @@ const mapDispatchToProps = {
   createFogEnd: createFogButtonReleased,
   initMutex,
   claimMutexToken,
+  looseMutexToken,
 
 
 };
