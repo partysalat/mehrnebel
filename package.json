@@ -36,8 +36,10 @@
   "author": "Ben Lenser",
   "license": "MIT",
   "dependencies": {
-    "react-router-dom": "^4.2.2",
-    "aws-sdk": "^2.142.0"
+    "aws-sdk": "^2.142.0",
+    "preact": "^8.3.1",
+    "preact-compat": "^3.18.4",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "amazon-cognito-auth-js": "1.2.4",
