@@ -12,6 +12,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  externals: {
+    ws: 'window.WebSocket',
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Custom template',

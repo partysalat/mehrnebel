@@ -7,20 +7,6 @@ const jeet = require('jeet');
 const webpackConfig = Object.assign({}, webpackBaseConfig, {
   mode: 'development',
   devtool: 'inline-source-map',
-  devServer: {
-    proxy: {
-      // simulating cloudfront reverse proxy
-      '/api': 'http://localhost:2999',
-    },
-    publicPath: '/',
-    hot: false,
-    inline: false,
-    historyApiFallback: true,
-    contentBase: path.join(__dirname, '../target/assets'),
-    host: '0.0.0.0',
-    disableHostCheck: true,
-    port: 9000,
-  },
 
 });
 
@@ -61,9 +47,6 @@ webpackConfig.module.rules.push({
     },
     {
       loader: 'stylus-loader',
-      options: {
-        use: [bootstrap(), jeet()],
-      },
     },
   ],
 });

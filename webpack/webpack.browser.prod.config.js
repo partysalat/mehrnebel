@@ -1,12 +1,10 @@
 const webpack = require('webpack');
 const _ = require('lodash');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
-const bootstrap = require('bootstrap-styl');
-const jeet = require('jeet');
-
 const webpackConfig = _.cloneDeep(require('./webpack.browser.base.config'));
 
 webpackConfig.plugins = [
+  ...webpackConfig.plugins,
   new ExtractCssChunks({
     filename: 'assets/[name]-[hash].css',
   }),
@@ -58,9 +56,6 @@ webpackConfig.module.rules.push({
     },
     {
       loader: 'stylus-loader',
-      options: {
-        use: [bootstrap(), jeet()],
-      },
     },
   ],
 });
