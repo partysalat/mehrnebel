@@ -9,7 +9,7 @@
     "url": "https://github.com/partysalat/cornetto-cloud-login"
   },
   "scripts": {
-    "copy:resources":"cp -R ./lib/browser/resources/* ./target/assets",
+    "copy:resources":"mkdir -p ./target/assets && cp -R ./lib/browser/resources/* ./target/assets",
     "browser:build": "webpack --config ./webpack/webpack.browser.prod.config.js & npm run copy:resources",
     "browser:build:dev": "webpack --config ./webpack/webpack.browser.dev.config.js & npm run copy:resources",
     "clean": "rm -rf target",
