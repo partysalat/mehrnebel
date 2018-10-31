@@ -9,13 +9,14 @@
     "url": "https://github.com/partysalat/cornetto-cloud-login"
   },
   "scripts": {
-    "browser:build": "webpack --config ./webpack/webpack.browser.prod.config.js",
-    "browser:build:dev": "webpack --config ./webpack/webpack.browser.dev.config.js",
+    "copy:resources":"cp -R ./lib/browser/resources/* ./target/assets",
+    "browser:build": "webpack --config ./webpack/webpack.browser.prod.config.js & npm run copy:resources",
+    "browser:build:dev": "webpack --config ./webpack/webpack.browser.dev.config.js & npm run copy:resources",
     "clean": "rm -rf target",
     "clean:light": "rm -rf target/assets",
     "test": "npm run unit",
-    "server:webpack:prod": "webpack-dev-server --config ./webpack/webpack.browser.prod.config.js",
-    "server:webpack": "webpack-dev-server --config ./webpack/webpack.browser.dev.config.js",
+    "server:webpack:prod": "npm run copy:resources && webpack-dev-server --config ./webpack/webpack.browser.prod.config.js",
+    "server:webpack": "npm run copy:resources && webpack-dev-server --config ./webpack/webpack.browser.dev.config.js",
     "server": "npm run server:webpack & sls offline start",
     "server:prod": "npm run server:webpack:prod & sls offline start",
     "watch": "npm run clean:light && (npm run server & npm run unit:watch)",
