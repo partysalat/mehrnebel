@@ -2,8 +2,10 @@
 import * as React from 'react';
 import './Spinner.styl';
 
-export default function () {
+export default function (props) {
+  const { mode } = props;
+  const isInline = mode === 'inline';
   return (
-    <div className="sp sp-wave" />
+    isInline ? <div className="sp sp-wave spinner-inline" /> : <div className="sp sp-wave" />
   );
 }
