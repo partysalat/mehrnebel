@@ -23,6 +23,7 @@ webpackConfig.module.rules.push({
     {
       loader: 'postcss-loader',
       options: {
+        sourceMap:true,
         plugins() {
           return [
             require('cssnano')({
