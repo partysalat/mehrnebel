@@ -27,7 +27,11 @@ class Buzzer extends Component {
     return (
       <div>
         <LogoutButton />
-        <UserInfo user={this.props.user} lastClaimer={this.props.lastClaimer} isClaimPending={this.props.isClaimPending}/>
+        <UserInfo
+          user={this.props.user}
+          lastClaimer={this.props.lastClaimer}
+          isClaimPending={this.props.isClaimPending}
+        />
         <ClaimMutexButton
           onClick={this.props.isClaimed ? this.props.looseMutexToken : this.props.claimMutexToken}
           isChecked={this.props.isClaimed}
