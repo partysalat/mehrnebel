@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './Buzzer.styl';
 import CreateFogButton from './CreateFogButton/CreateFogButton';
 import UserInfo from './UserInfo/UserInfo';
-import LogoutButton from './LogoutButton/LogoutButton';
+import Header from '../common/header';
 import {
   createFog,
   createFogButtonReleased,
@@ -26,7 +26,7 @@ class Buzzer extends Component {
   render() {
     return (
       <div>
-        <LogoutButton />
+        <Header />
         <UserInfo
           user={this.props.user}
           lastClaimer={this.props.lastClaimer}

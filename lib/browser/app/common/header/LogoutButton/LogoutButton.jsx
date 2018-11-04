@@ -1,6 +1,8 @@
 import * as React from 'react';
 import './LogoutButton.styl';
-import { logout } from '../../login/authService';
+
+// TODO: use redux for that
+import { logout } from '../../../login/authService';
 
 export default function () {
   return (

@@ -52,7 +52,7 @@ module.exports = {
     hot: false,
     inline: false,
     historyApiFallback: true,
-    contentBase: path.join(__dirname, '../target/assets'),
+    contentBase: path.join(__dirname, '../target'),
     host: '0.0.0.0',
     disableHostCheck: true,
     port: 9000,
