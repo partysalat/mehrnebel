@@ -4,7 +4,7 @@ import './index.styl';
 import Header from '../common/header';
 import List from './list';
 import { loadBestList } from '../../redux/actions';
-import Spinner from '../buzzer/Spinner/Spinner';
+import Spinner from '../common/Spinner/Spinner';
 
 class Stats extends Component {
   componentWillMount() {
