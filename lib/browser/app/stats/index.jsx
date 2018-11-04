@@ -4,6 +4,7 @@ import './index.styl';
 import Header from '../common/header';
 import List from './list';
 import { loadBestList } from '../../redux/actions';
+import Spinner from '../buzzer/Spinner/Spinner';
 
 class Stats extends Component {
   componentWillMount() {
@@ -13,7 +14,9 @@ class Stats extends Component {
     return (
       <div>
         <Header />
-        <List list={this.props.list} />
+        {this.props.list.length === 0 ?
+          <Spinner /> :
+          <List list={this.props.list} />}
       </div>
     );
   }
