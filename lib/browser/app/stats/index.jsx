@@ -14,7 +14,7 @@ class Stats extends Component {
     return (
       <div>
         <Header />
-        {this.props.list.length === 0 ?
+        {this.props.isLoadingBestList ?
           <Spinner /> :
           <List list={this.props.list} />}
       </div>
@@ -25,6 +25,7 @@ class Stats extends Component {
 function mapStateToProps(state) {
   return {
     list: state.bestlist,
+    isLoadingBestList: state.isLoadingBestList,
   };
 }
 const mapDispatchToProps = {
