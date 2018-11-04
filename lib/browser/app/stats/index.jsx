@@ -25,7 +25,7 @@ class Stats extends Component {
 function mapStateToProps(state) {
   return {
     list: state.bestlist,
-    isLoadingBestList: state.isLoadingBestList,
+    isLoadingBestList: state.state.isLoadingBestList,
   };
 }
 const mapDispatchToProps = {
