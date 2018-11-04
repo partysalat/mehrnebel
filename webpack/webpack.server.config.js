@@ -4,6 +4,7 @@ const nodeExternals = require('webpack-node-externals');
 module.exports = {
   mode: 'production',
   entry: {
+    statsHandler: './lib/server/handlers/statsHandler.js',
     pushHandler: './lib/server/handlers/pushHandler.js',
     iotCredentialsHandler: './lib/server/handlers/iotCredentialsHandler.js',
   },

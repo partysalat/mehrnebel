@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './index.styl';
 import Header from '../common/header';
+import List from './list';
 import { loadBestList } from '../../redux/actions';
-import connect from 'react-redux/es/connect/connect';
 
 class Stats extends Component {
   componentWillMount() {
@@ -12,7 +13,7 @@ class Stats extends Component {
     return (
       <div>
         <Header />
-        FOOO!
+        <List list={this.props.list} />
       </div>
     );
   }
@@ -20,6 +21,7 @@ class Stats extends Component {
 
 function mapStateToProps(state) {
   return {
+    list: state.bestlist,
   };
 }
 const mapDispatchToProps = {

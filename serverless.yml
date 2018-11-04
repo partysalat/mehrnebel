@@ -102,11 +102,24 @@ functions:
           path: /api/config
           integration: lambda
   getUser:
-    handler: lib/server/handlers/pushHandler.getUser
+    handler: lib/server/handlers/statsHandler.getUser
     events:
       - http:
           method: GET
           path: /api/user
+          integration: lambda
+          authorizer:
+            arn: ${cf:login-cognito-userpool.cognitoArnPool}
+            claims:
+              - email
+              - name
+              - cognito:username
+  getBestList:
+    handler: lib/server/handlers/statsHandler.getBestList
+    events:
+      - http:
+          method: GET
+          path: /api/best-list
           integration: lambda
           authorizer:
             arn: ${cf:login-cognito-userpool.cognitoArnPool}
