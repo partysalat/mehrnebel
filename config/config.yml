@@ -2,7 +2,7 @@ local:
   USER_POOL_ID: ${cf:login-cognito-userpool.cognitoUserPool}
   USER_POOL_CLIENT_ID: ${cf:login-cognito-userpool.cognitoUserPoolClient}
   USER_POOL_LOGIN_URL: ${cf:login-cognito-userpool.userPoolDomain}
-  IOT_ENDPOINT: ${cf:thing-smoke-machine.thingEndpoint}
+  IOT_ENDPOINT: aen1uw1vkeumx-ats.iot.eu-central-1.amazonaws.com
   IOT_ENABLED: false
   DYNAMO_REGION: localhost
   DYNAMO_ENDPOINT: http://localhost:8000
@@ -15,7 +15,7 @@ pro:
   USER_POOL_ID: ${cf:login-cognito-userpool.cognitoUserPool}
   USER_POOL_CLIENT_ID: ${cf:login-cognito-userpool.cognitoUserPoolClient}
   USER_POOL_LOGIN_URL: ${cf:login-cognito-userpool.userPoolDomain}
-  IOT_ENDPOINT: ${cf:thing-smoke-machine.thingEndpoint}
+  IOT_ENDPOINT: aen1uw1vkeumx-ats.iot.eu-central-1.amazonaws.com
   IOT_ENABLED: true
   DYNAMO_REGION: ${opt:region,self:provider.region}
   DYNAMO_TABLE_NAME: usersFogTable-${opt:stage, self:provider.stage}
