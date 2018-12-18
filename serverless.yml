@@ -135,15 +135,13 @@ resources:
        Type: AWS::DynamoDB::Table
        Properties:
          TableName: usersFogTable-${opt:stage, self:provider.stage}
+         BillingMode: PAY_PER_REQUEST
          AttributeDefinitions:
            - AttributeName: username
              AttributeType: S
          KeySchema:
            - AttributeName: username
              KeyType: HASH
-         ProvisionedThroughput:
-           ReadCapacityUnits: 1
-           WriteCapacityUnits: 1
 
 
    Outputs:
